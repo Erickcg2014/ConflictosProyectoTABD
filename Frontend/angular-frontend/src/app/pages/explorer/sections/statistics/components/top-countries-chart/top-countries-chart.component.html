@@ -1,0 +1,49 @@
+<div #chartContainer class="chart-container">
+  <!-- ============================================ -->
+  <!-- ESTADO: LOADING -->
+  <!-- ============================================ -->
+  <div *ngIf="!isVisible || isLoading" class="chart-placeholder">
+    <div class="placeholder-content">
+      <span class="material-icons rotating">hourglass_empty</span>
+      <p>Cargando países...</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- GRÁFICO -->
+  <!-- ============================================ -->
+  <div *ngIf="isVisible && !isLoading" class="chart-wrapper">
+    <!-- Header con toggle -->
+    <div class="chart-header">
+      <div class="chart-title">
+        <span class="material-icons">public</span>
+        <span>{{
+          currentMetric === "events"
+            ? "Por Número de Eventos"
+            : "Por Total de Muertes"
+        }}</span>
+      </div>
+
+      <button class="toggle-btn" (click)="toggleMetric()">
+        <span class="material-icons">swap_horiz</span>
+        {{ getToggleLabel() }}
+      </button>
+    </div>
+
+    <!-- Canvas del gráfico -->
+    <div class="chart-canvas-wrapper">
+      <canvas
+        baseChart
+        [type]="barChartType"
+        [data]="barChartData"
+        [options]="barChartOptions"
+      ></canvas>
+    </div>
+
+    <!-- Footer con info -->
+    <div class="chart-footer">
+      <span class="material-icons">info</span>
+      <span>Filtros por países</span>
+    </div>
+  </div>
+</div>

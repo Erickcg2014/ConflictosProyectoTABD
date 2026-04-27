@@ -1,0 +1,54 @@
+<div class="map-container">
+  <!-- Mapa principal -->
+  <div id="map"></div>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" style="display: none">
+    <div class="loading-spinner">
+      <div class="spinner"></div>
+      <span class="loading-text">Cargando datos del mapa...</span>
+    </div>
+  </div>
+
+  <!-- Controles flotantes del mapa -->
+  <div class="map-controls">
+    <button class="control-button" (click)="centerMap()" title="Centrar mapa">
+      <span class="material-icons">my_location</span>
+    </button>
+    <button class="control-button" (click)="toggleFilters()" title="Filtros">
+      <span class="material-icons">filter_alt</span>
+    </button>
+    <button class="control-button" (click)="toggleLayers()" title="Capas">
+      <span class="material-icons">layers</span>
+    </button>
+  </div>
+
+  <div class="region-filter">
+    <select (change)="filterByRegion($event)">
+      <option value="" disabled selected>Seleccionar Región</option>
+      <option value="america">América</option>
+      <option value="europa">Europa</option>
+      <option value="africa">África</option>
+      <option value="asia">Asia</option>
+      <option value="medio-oriente">Medio Oriente</option>
+      <option value="oceania">Oceanía</option>
+    </select>
+  </div>
+
+  <!-- Leyenda del mapa -->
+  <div class="map-legend">
+    <h4>Densidad de Eventos</h4>
+    <div class="legend-item">
+      <div class="legend-color small"></div>
+      <span>1-10 eventos</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color medium"></div>
+      <span>11-100 eventos</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color large"></div>
+      <span>100+ eventos</span>
+    </div>
+  </div>
+</div>

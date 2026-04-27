@@ -1,0 +1,59 @@
+<div #chartContainer class="chart-container">
+  <!-- ============================================ -->
+  <!-- ESTADO: LOADING -->
+  <!-- ============================================ -->
+  <div *ngIf="!isVisible || isLoading" class="chart-placeholder">
+    <div class="placeholder-content">
+      <span class="material-icons rotating">hourglass_empty</span>
+      <p>Cargando gráfico temporal...</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- GRÁFICO -->
+  <!-- ============================================ -->
+  <div *ngIf="isVisible && !isLoading" class="chart-wrapper">
+    <div class="chart-canvas-wrapper">
+      <canvas
+        baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+      ></canvas>
+    </div>
+
+    <!-- Insights -->
+    <div class="chart-insights" *ngIf="insights">
+      <div class="insight-item">
+        <span class="material-icons insight-icon">trending_up</span>
+        <div class="insight-content">
+          <span class="insight-label">Pico Histórico:</span>
+          <span class="insight-value">
+            {{ insights.maxYear }} con {{ insights.maxDeaths | number }} muertes
+          </span>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <span class="material-icons insight-icon">show_chart</span>
+        <div class="insight-content">
+          <span class="insight-label">Tendencia Reciente:</span>
+          <span class="insight-value">
+            {{ insights.trend }} en los últimos {{ insights.recentYears }} años
+          </span>
+        </div>
+      </div>
+
+      <div class="insight-item">
+        <span class="material-icons insight-icon">sentiment_satisfied</span>
+        <div class="insight-content">
+          <span class="insight-label">Periodo Más Pacífico:</span>
+          <span class="insight-value">
+            {{ insights.peaceYear }} con
+            {{ insights.minDeaths | number }} muertes
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

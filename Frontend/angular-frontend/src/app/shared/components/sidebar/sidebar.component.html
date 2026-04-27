@@ -1,0 +1,117 @@
+<!-- Sidebar Container -->
+<aside
+  class="fixed left-0 top-16 h-[calc(100vh-4rem)] bg-card border-r border-border transition-all duration-300 ease-in-out z-40 shadow-lg"
+  [class.w-64]="isOpen"
+  [class.w-20]="!isOpen"
+>
+  <!-- Toggle Button -->
+  <button
+    (click)="onToggle()"
+    class="absolute -right-4 top-6 bg-card text-foreground rounded-full p-2 shadow-xl border-2 border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300 hover:scale-110 z-50"
+    [attr.aria-label]="isOpen ? 'Ocultar sidebar' : 'Mostrar sidebar'"
+    [title]="isOpen ? 'Ocultar sidebar' : 'Mostrar sidebar'"
+  >
+    <span class="material-icons text-xl">
+      {{ isOpen ? "chevron_left" : "chevron_right" }}
+    </span>
+  </button>
+
+  <!-- Sidebar Header -->
+  <div
+    class="px-4 py-4 border-b border-border transition-opacity duration-300"
+    [class.opacity-100]="isOpen"
+    [class.opacity-0]="!isOpen"
+    [class.h-16]="isOpen"
+    [class.h-0]="!isOpen"
+    [class.overflow-hidden]="!isOpen"
+  >
+    <h2 class="text-lg font-semibold text-foreground flex items-center gap-2">
+      <span class="material-icons text-primary">explore</span>
+      <span>Explorador</span>
+    </h2>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <nav class="p-3 space-y-1 overflow-y-auto h-[calc(100vh-12rem)]">
+    <button
+      *ngFor="let item of menuItems"
+      (click)="onSelectItem(item.id)"
+      class="w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 group relative"
+      [class.bg-primary]="item.active"
+      [class.text-primary-foreground]="item.active"
+      [class.shadow-md]="item.active"
+      [class.hover:bg-accent]="!item.active"
+      [class.hover:text-accent-foreground]="!item.active"
+      [attr.title]="!isOpen ? item.label : null"
+    >
+      <!-- Icono -->
+      <span
+        class="material-icons text-xl flex-shrink-0 transition-colors"
+        [class.text-primary-foreground]="item.active"
+        [class.text-muted-foreground]="!item.active"
+        [class.group-hover:text-primary]="!item.active"
+      >
+        {{ item.icon }}
+      </span>
+
+      <!-- Label (visible cuando está abierto) -->
+      <span
+        class="text-sm font-medium whitespace-nowrap transition-all duration-300"
+        [class.opacity-100]="isOpen"
+        [class.opacity-0]="!isOpen"
+        [class.w-full]="isOpen"
+        [class.w-0]="!isOpen"
+        [class.overflow-hidden]="!isOpen"
+      >
+        {{ item.label }}
+      </span>
+
+      <!-- Indicador activo (visible cuando está cerrado) -->
+      <span
+        *ngIf="item.active && !isOpen"
+        class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-primary rounded-r-full"
+      ></span>
+
+      <!-- Tooltip (visible cuando está cerrado y hover) -->
+      <div
+        *ngIf="!isOpen"
+        class="absolute left-full ml-2 px-3 py-2 bg-card text-card-foreground text-sm rounded-lg shadow-xl border border-border whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50"
+      >
+        {{ item.label }}
+        <!-- Flecha del tooltip -->
+        <div
+          class="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-card"
+        ></div>
+      </div>
+    </button>
+  </nav>
+
+  <!-- Sidebar Footer -->
+  <div
+    class="absolute bottom-0 left-0 right-0 p-4 border-t border-border bg-card transition-all duration-300"
+  >
+    <!-- Información cuando está abierto -->
+    <div
+      class="text-xs text-muted-foreground text-center transition-opacity duration-300"
+      [class.opacity-100]="isOpen"
+      [class.opacity-0]="!isOpen"
+      [class.pointer-events-none]="!isOpen"
+    >
+      <div class="flex items-center justify-center gap-2 mb-1">
+        <span class="material-icons text-sm">info</span>
+        <span class="font-semibold">Versión 1.0.0</span>
+      </div>
+      <p class="text-[10px]">© 2025 OEB</p>
+    </div>
+
+    <!-- Icono cuando está cerrado -->
+    <div
+      class="flex justify-center transition-opacity duration-300"
+      [class.opacity-0]="isOpen"
+      [class.opacity-100]="!isOpen"
+      [class.pointer-events-none]="isOpen"
+    >
+      <span class="material-icons text-muted-foreground text-lg">info</span>
+    </div>
+  </div>
+</aside>

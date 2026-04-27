@@ -1,0 +1,84 @@
+<div #chartContainer class="chart-container">
+  <!-- ============================================ -->
+  <!-- ESTADO: LOADING -->
+  <!-- ============================================ -->
+  <div *ngIf="!isVisible || isLoading" class="chart-placeholder">
+    <div class="placeholder-content">
+      <span class="material-icons rotating">hourglass_empty</span>
+      <p>Cargando distribución...</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- GRÁFICO -->
+  <!-- ============================================ -->
+  <div *ngIf="isVisible && !isLoading" class="chart-wrapper">
+    <!-- Header con toggle -->
+    <div class="chart-header">
+      <div class="chart-title">
+        <span class="material-icons">pie_chart</span>
+        <span>{{ getCurrentData().title }}</span>
+      </div>
+
+      <button
+        class="toggle-btn"
+        (click)="toggleMetric()"
+        type="button"
+        [attr.aria-label]="getToggleLabel()"
+      >
+        <span class="material-icons">swap_horiz</span>
+        {{ getToggleLabel() }}
+      </button>
+    </div>
+
+    <!-- Chart + Stats Grid -->
+    <div class="chart-content-grid">
+      <!-- Gráfico Donut -->
+      <div class="chart-canvas-wrapper">
+        <canvas
+          baseChart
+          [type]="doughnutChartType"
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+        ></canvas>
+
+        <!-- ✅ Centro del donut con total calculado dinámicamente -->
+        <div class="donut-center">
+          <div class="donut-center-value">
+            {{ formatNumber(getTotalValue()) }}
+          </div>
+          <div class="donut-center-label">TOTAL</div>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-cards">
+        <div
+          *ngFor="let label of getCurrentData().labels; let i = index"
+          class="stat-card"
+          [attr.data-type]="i"
+        >
+          <div class="stat-card-header">
+            <div class="stat-color" [style.background]="getColor(i)"></div>
+            <span class="stat-label">{{ label }}</span>
+          </div>
+          <div class="stat-value">
+            {{ formatNumber(getCurrentData().data[i] || 0) }}
+          </div>
+          <div class="stat-percentage">
+            {{ getCurrentData().percentages[i] }}% del total
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer con info -->
+    <div class="chart-footer">
+      <span class="material-icons">info</span>
+      <span>
+        Los porcentajes se calculan sobre el total de
+        {{ currentMetric === "events" ? "eventos" : "muertes" }}
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div class="min-h-screen bg-background text-foreground">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <span class="material-icons text-2xl">public</span>
+          <span class="text-xl font-semibold">Observatorio de Eventos Bélicos</span>
+        </div>
+
+        <!-- Menu -->
+        <div class="flex items-center gap-6">
+          <a routerLink="/" class="px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition">
+            <span class="material-icons text-sm align-middle mr-1">home</span>
+            Inicio
+          </a>
+          <a routerLink="/explorer" class="px-4 py-2 hover:text-primary transition">
+            <span class="material-icons text-sm align-middle mr-1">bar_chart</span>
+            Explorar
+          </a>
+          <a routerLink="/about" class="px-4 py-2 hover:text-primary transition">
+            <span class="material-icons text-sm align-middle mr-1">menu_book</span>
+            Acerca de
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="container mx-auto text-center">
+      <h1 class="text-6xl font-bold mb-6 leading-tight">
+        Observatorio de<br>
+        Eventos Bélicos
+      </h1>
+
+      <p class="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed">
+        Mapeo y análisis integral de eventos de conflictos armados en todo el mundo.
+        Proporcionando información basada en datos para investigación, políticas y esfuerzos humanitarios.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex gap-4 justify-center">
+        <a
+          routerLink="/explorer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition font-medium"
+        >
+          Explorar Datos
+          <span class="material-icons">arrow_forward</span>
+        </a>
+
+        <a
+          routerLink="/about"
+          class="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-lg hover:bg-accent transition font-medium"
+        >
+          Conocer Más
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 px-6">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Feature Card 1 -->
+        <div class="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition">
+          <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mb-6">
+            <span class="material-icons text-4xl text-accent-foreground">map</span>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Mapeo Interactivo</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Visualiza eventos de conflictos con coordenadas geográficas precisas y agrupación
+          </p>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition">
+          <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mb-6">
+            <span class="material-icons text-4xl text-accent-foreground">schedule</span>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Análisis Temporal</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Rastrea patrones de conflictos a lo largo del tiempo con visualización detallada de línea temporal
+          </p>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition">
+          <div class="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mb-6">
+            <span class="material-icons text-4xl text-accent-foreground">bar_chart</span>
+          </div>
+          <h3 class="text-2xl font-semibold mb-4">Perspectivas Estadísticas</h3>
+          <p class="text-muted-foreground leading-relaxed">
+            Análisis completo y datos agregados por región y tipo de conflicto
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (opcional) -->
+  <footer class="py-8 px-6 border-t border-border mt-20">
+    <div class="container mx-auto text-center text-sm text-muted-foreground">
+      <p>© 2025 Observatorio de Eventos Bélicos. Proyecto de investigación abierto.</p>
+    </div>
+  </footer>
+
+</div>

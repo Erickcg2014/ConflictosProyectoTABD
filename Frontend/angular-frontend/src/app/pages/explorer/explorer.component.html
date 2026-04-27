@@ -1,0 +1,45 @@
+<!-- Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Contenedor principal -->
+<div class="explorer-container">
+  <!-- Sidebar -->
+  <app-sidebar
+    [isOpen]="isSidebarOpen"
+    (toggle)="onToggleSidebar()"
+    (sectionSelected)="onSectionSelected($event)"
+  ></app-sidebar>
+
+  <div
+    class="content-area"
+    [ngClass]="{
+      'sidebar-open': isSidebarOpen,
+      'sidebar-closed': !isSidebarOpen
+    }"
+  >
+    <!-- Header de la sección -->
+    <div class="section-header">
+      <span class="material-icons section-icon">{{
+        getSectionIcon(selectedSection)
+      }}</span>
+      <div class="section-info">
+        <h1>{{ getSectionLabel(selectedSection) }}</h1>
+        <p>Exploración de datos de conflictos armados a nivel mundial</p>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: ESTADÍSTICAS -->
+    <app-statistics *ngIf="selectedSection === 'statistics'"></app-statistics>
+
+    <!-- SECCIÓN: MAPA INTERACTIVO (AHORA ES UN COMPONENTE) -->
+    <app-mapa-interactivo
+      *ngIf="selectedSection === 'map'"
+      class="map-section-wrapper"
+    >
+    </app-mapa-interactivo>
+
+    <!-- SECCIÓN: REDES DE ACTORES (CONFLICT-MAP) -->
+    <app-conflict-map *ngIf="selectedSection === 'conflict-map'">
+    </app-conflict-map>
+  </div>
+</div>

@@ -1,0 +1,137 @@
+<div class="statistics-container">
+  <!-- ============================================ -->
+  <!-- OVERLAY DE CARGA  -->
+  <!-- ============================================ -->
+  <div *ngIf="isLoadingData" class="loading-overlay">
+    <div class="loading-spinner">
+      <span class="material-icons rotating">refresh</span>
+      <p>Actualizando datos...</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 1: FILTROS (STICKY) -->
+  <!-- ============================================ -->
+  <div class="filters-section">
+    <app-stats-filters
+      [filters]="currentFilters"
+      (filtersChanged)="onFiltersChanged($event)"
+      (filtersReset)="onFiltersReset()"
+    ></app-stats-filters>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 2: CARDS DE MÉTRICAS CLAVE -->
+  <!-- ============================================ -->
+  <section
+    id="section-cards"
+    class="scroll-section stats-section"
+    [attr.data-section]="'cards'"
+  >
+    <app-stats-cards [filters]="currentFilters"></app-stats-cards>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 3: GRÁFICO PRINCIPAL - EVOLUCIÓN TEMPORAL -->
+  <!-- ============================================ -->
+  <section
+    id="section-timeline"
+    class="scroll-section stats-section"
+    [attr.data-section]="'timeline'"
+  >
+    <div class="section-title">
+      <span class="material-icons">show_chart</span>
+      <h2>Evolución Temporal</h2>
+    </div>
+    <app-timeline-chart [filters]="currentFilters"></app-timeline-chart>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 4: ANÁLISIS REGIONAL Y POR TIPO -->
+  <!-- ============================================ -->
+  <section
+    id="section-analysis"
+    class="scroll-section stats-section"
+    [attr.data-section]="'analysis'"
+  >
+    <div class="section-title">
+      <span class="material-icons">analytics</span>
+      <h2>Análisis Regional y por Tipo</h2>
+    </div>
+
+    <div class="analysis-grid">
+      <!-- Top 10 Países -->
+      <div class="chart-card">
+        <h3>
+          <span class="material-icons">public</span>
+          Top 10 Países por Eventos
+        </h3>
+        <app-top-countries-chart
+          [filters]="currentFilters"
+        ></app-top-countries-chart>
+      </div>
+
+      <!-- Distribución por Tipo -->
+      <div class="chart-card">
+        <h3>
+          <span class="material-icons">pie_chart</span>
+          Distribución por Tipo de Violencia
+        </h3>
+        <app-violence-type-chart
+          [filters]="currentFilters"
+        ></app-violence-type-chart>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 5: TABLA DE CONFLICTOS -->
+  <!-- ============================================ -->
+  <section
+    id="section-table"
+    class="scroll-section stats-section"
+    [attr.data-section]="'table'"
+  >
+    <div class="section-title">
+      <span class="material-icons">table_chart</span>
+      <h2>Conflictos Más Mortales</h2>
+    </div>
+    <app-conflicts-table [filters]="currentFilters"></app-conflicts-table>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- MINI NAVEGACIÓN LATERAL (DESKTOP) -->
+  <!-- ============================================ -->
+  <nav
+    class="section-nav"
+    *ngIf="showScrollTop"
+    role="navigation"
+    aria-label="Navegación rápida de secciones"
+  >
+    <button
+      *ngFor="let section of sections"
+      [class.active]="activeSection === section.id"
+      (click)="scrollToSection(section.id)"
+      [title]="section.label"
+      [attr.aria-label]="'Ir a ' + section.label"
+      type="button"
+    >
+      <span class="material-icons" aria-hidden="true">{{ section.icon }}</span>
+      <span class="label">{{ section.label }}</span>
+    </button>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- BOTÓN VOLVER ARRIBA (FLOATING) -->
+  <!-- ============================================ -->
+  <button
+    *ngIf="showScrollTop"
+    class="scroll-top-btn"
+    (click)="scrollToTop()"
+    title="Volver arriba"
+    aria-label="Volver arriba"
+    type="button"
+  >
+    <span class="material-icons" aria-hidden="true">arrow_upward</span>
+  </button>
+</div>

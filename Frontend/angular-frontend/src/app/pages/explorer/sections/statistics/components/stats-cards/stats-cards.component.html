@@ -1,0 +1,80 @@
+<div class="stats-cards-grid">
+  <!-- ============================================ -->
+  <!-- CARD ITERADO -->
+  <!-- ============================================ -->
+  <div
+    *ngFor="let card of cards"
+    class="stat-card"
+    [attr.data-card-id]="card.id"
+  >
+    <!-- Header del Card -->
+    <div class="card-header">
+      <div class="card-icon" [style.background-color]="card.color + '20'">
+        <span class="material-icons" [style.color]="card.color">
+          {{ card.icon }}
+        </span>
+      </div>
+      <div class="card-label">{{ card.label }}</div>
+    </div>
+
+    <!-- Valor Principal -->
+    <div class="card-value">
+      {{ card.formattedValue }}
+    </div>
+
+    <!-- Indicador de Tendencia -->
+    <div
+      class="card-trend"
+      [class.trend-up]="card.trend.direction === 'up'"
+      [class.trend-down]="card.trend.direction === 'down'"
+    >
+      <span class="material-icons trend-icon">
+        {{ card.trend.direction === "up" ? "arrow_upward" : "arrow_downward" }}
+      </span>
+      <span class="trend-value">{{ card.trend.value }}%</span>
+      <span class="trend-label">{{ card.trend.label }}</span>
+    </div>
+
+    <!-- Mini Gráfico (Sparkline) -->
+    <div class="card-sparkline">
+      <svg viewBox="0 0 100 30" preserveAspectRatio="none">
+        <defs>
+          <linearGradient
+            [id]="'gradient-' + card.id"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop
+              offset="0%"
+              [attr.stop-color]="card.color"
+              stop-opacity="0.3"
+            />
+            <stop
+              offset="100%"
+              [attr.stop-color]="card.color"
+              stop-opacity="0"
+            />
+          </linearGradient>
+        </defs>
+
+        <!-- Área bajo la línea -->
+        <path
+          [attr.d]="
+            generateSparklinePath(card.sparklineData) + ' L 100,30 L 0,30 Z'
+          "
+          [attr.fill]="'url(#gradient-' + card.id + ')'"
+        />
+
+        <!-- Línea del gráfico -->
+        <path
+          [attr.d]="generateSparklinePath(card.sparklineData)"
+          [attr.stroke]="card.color"
+          stroke-width="2"
+          fill="none"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

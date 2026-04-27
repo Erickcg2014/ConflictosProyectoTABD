@@ -1,0 +1,96 @@
+<nav
+  class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <span class="material-icons text-3xl text-primary">public</span>
+        <span class="text-xl font-bold text-foreground hidden sm:block">
+          Observatorio de Eventos Bélicos
+        </span>
+        <span class="text-xl font-bold text-foreground sm:hidden"> OEB </span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        <a
+          routerLink="/"
+          routerLinkActive="bg-accent text-accent-foreground"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
+        >
+          <span class="material-icons text-lg">home</span>
+          <span>Inicio</span>
+        </a>
+
+        <a
+          routerLink="/explorer"
+          routerLinkActive="bg-accent text-accent-foreground"
+          class="px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
+        >
+          <span class="material-icons text-lg">explore</span>
+          <span>Explorar</span>
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="bg-accent text-accent-foreground"
+          class="px-4 py-2 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors flex items-center gap-2"
+        >
+          <span class="material-icons text-lg">info</span>
+          <span>Acerca de</span>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        (click)="toggleMenu()"
+        class="md:hidden p-2 rounded-lg hover:bg-accent transition-colors"
+        aria-label="Toggle menu"
+      >
+        <span class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div
+      class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+      [class.max-h-0]="!isMenuOpen"
+      [class.max-h-64]="isMenuOpen"
+    >
+      <div class="py-4 space-y-2">
+        <a
+          routerLink="/"
+          routerLinkActive="bg-accent text-accent-foreground"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="toggleMenu()"
+          class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+        >
+          <span class="material-icons">home</span>
+          <span>Inicio</span>
+        </a>
+
+        <a
+          routerLink="/explorer"
+          routerLinkActive="bg-accent text-accent-foreground"
+          (click)="toggleMenu()"
+          class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+        >
+          <span class="material-icons">explore</span>
+          <span>Explorar</span>
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="bg-accent text-accent-foreground"
+          (click)="toggleMenu()"
+          class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors"
+        >
+          <span class="material-icons">info</span>
+          <span>Acerca de</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

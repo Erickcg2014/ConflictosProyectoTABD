@@ -1,0 +1,1009 @@
+Government of Pakistan;Pakistan
+Government of Afghanistan;Afganistán
+IS;Irak
+Kligal;Etiopía
+Government of Angola;Angola
+ARSA;Myanmar
+Government of Bangladesh;Bangladés
+Government of Benin;Benin
+PCC;Brazil
+Comando Vermelho;Brazil
+GDE, PCC;Brazil
+Cartel do Norte;Mexico
+Amigos Para Sempre;Brazil
+Bonde dos 13, PCC;Brazil
+Bonde dos 40;Brazil
+Government of Burkina Faso;Burkina Faso
+Government of Burundi;Burundi
+RED-TABARA;Burundi
+Government of Cameroon;Camerún
+Ambazonia insurgents;Camerún
+Government of Central African Republic;República Centroafricana
+CPC;República Centroafricana
+EGC;República Centroafricana
+Government of Colombia;Colombia
+FARC-EMC;Colombia
+Government of Ethiopia;Etiopía
+Ari;Etiopía
+Amhara;Etiopía
+G9;Haiti
+Government of India;India
+CPI-Maoist;India
+Kashmir insurgents;India
+TPC;República Democrática del Congo
+BJD;Mali
+Government of Indonesia;Indonesia
+OPM;Indonesia
+Government of Iraq;Irak
+Government of Israel;Israel
+Government of Kenya;Kenia
+Government of Mali;Mali
+JNIM;Mali
+Sinaloa Cartel;Mexico
+Jalisco Cartel New Generation;Mexico
+Juarez Cartel;Mexico
+Grupo Escorpion, Gulf Cartel - Los Ciclones faction;Mexico
+Sinaloa Cartel - Los Chapitos;Mexico
+Caborca Cartel, Sinaloa Cartel - Los Mayos;Mexico
+Guerreros Unidos;Mexico
+Carteles Unidos;Mexico
+Cartel Independiente de Colima;Mexico
+Jalisco Cartel New Generation, Sangre Nueva Zeta;Mexico
+Cartel Independiente de Acapulco;Mexico
+Gulf Cartel;Mexico
+Government of Mozambique;Mozambique
+Government of Niger;Niger
+Government of Nigeria;Nigeria
+Jama'atu Ansarul Musilimina fi Biladi Sudan;Nigeria
+Black Axe;Nigeria
+TTP;Pakistan
+Government of Iran;Iran
+BRAS;Brazil
+HGB;Brazil
+Kunalin;Brazil
+Government of Philippines;Filipinas
+CPP;Colombia
+Government of Somalia;Somalia
+Al-Shabaab;Somalia
+The Americans Gang;Estados Unidos
+Nuer;Sudán del Sur
+Beni Halba Baggara;Sudan
+Government of Sudan;Sudan
+RSF;Sudan
+Government of Syria;Syria
+SNA;Syria
+Government of Thailand;Tailandia
+Government of Russia (Soviet Union);Rusia
+Government of United States of America;Estados Unidos
+Government of Tajikistan;Tajikistan
+Taleban;Afganistán
+UIFSA;Afganistán
+Hizb-i Islami-yi Afghanistan;Afganistán
+Jam'iyyat-i Islami-yi Afghanistan;Afganistán
+Taleban - Ali Dad faction;Afganistán
+Hizb-i Wahdat;Afganistán
+Forces of Mullah Abdol Rauf Khadim;Afganistán
+High Council of Afghanistan Islamic Emirate, IS;Afganistán
+Government of Algeria;Algeria
+GIA;Algeria
+AQIM;Algeria
+Arab Brabich;Chad
+UNITA;Angola
+Government of Azerbaijan;Azerbaiyán
+Government of Myanmar (Burma);Myanmar
+PCJSS;Bangladés
+JMB;Bangladés
+HuJI;Indonesia
+Supporters of Awami League;Bangladés
+BCP;Sudáfrica
+Laime;Brazil
+Government of Brazil;Brazil
+Hezbollah;Líbano
+Amigos dos Amigos;Brazil
+Barriga gang;Brazil
+Nova Okaida;Brazil
+FDN;Brazil
+Comando Classe A;Brazil
+Anti-Bala;Brazil
+Bonde do Maluco;Brazil
+Associação Família Capixaba;Brazil
+Ajeita;Brazil
+Ansaroul Islam;Burkina Faso
+Koglweogo;Burkina Faso
+Government of Rwanda;Rwanda
+Palipehutu-FNL;Burundi
+CNDD-FDD;Burundi
+FPR;Rwanda
+Palipehutu;Burundi
+CNDD;Burundi
+Interahamwe, ex-FAR;Rwanda
+Hutu;Rwanda
+FRODEBU;Burundi
+Sans Echec;Haiti
+Sans défaite;Haiti
+CNDD-Benjamin;Burundi
+JAS;Mexico
+Choa Arab;Chad
+Comités locaux de vigilance;Burkina Faso
+Hells Angels;Estados Unidos
+Government of Uganda;Uganda
+Government of Chad;Chad
+Government of Congo;Congo
+SPLM/A;Sudán del Sur
+LRA;Uganda
+Janjaweed;Sudan
+Seleka;República Centroafricana
+FDPC;República Centroafricana
+Christians (CAR);República Centroafricana
+anti-Balaka;República Centroafricana
+FPRC;República Centroafricana
+UPC;República Centroafricana
+MPC;República Centroafricana
+3R;República Centroafricana
+FPRC, MPC;República Centroafricana
+anti-Balaka, FPRC-AK;República Centroafricana
+MNLC;República Centroafricana
+Anti-Balaka - Mokom, FPRC, MPC, RPRC;República Centroafricana
+Anti-Balaka - Mokom;República Centroafricana
+FPRC, MPC, Self-Defense Mujahidin (CAR);República Centroafricana
+Azande Ani Kpi Gbe;República Centroafricana
+Awlad Zeid;Sudan
+Toubou;Chad
+Dadjo;Chad
+Farmers (Chad);Chad
+Arab;Sudan
+Government of China;China
+FARC;Colombia
+ELN;Colombia
+ACCU;Colombia
+AUC;Colombia
+Bloque Central Bolívar;Colombia
+AGC;Colombia
+ACC;República Centroafricana
+Frente Oliver Sinisterra;Colombia
+Los Costenos;Colombia
+Ntsiloulous;Sudán del Sur
+Government of Croatia;Croacia
+Government of Bosnia-Herzegovina;Bosnia-Herzegovina
+Los Choneros;Ecuador
+Los Lobos;Ecuador
+Government of Egypt;Egipto
+Government of El Salvador;El Salvador
+Mara Salvatrucha (El Salvador);El Salvador
+La Raza;Mexico
+Government of Eritrea;Eritrea
+TPLF;Etiopía
+Afar;Etiopía
+Anuak;Etiopía
+Borana;Sudán del Sur
+Burji;Indonesia
+Dawa;Etiopía
+Nyangatom;Etiopía
+Gumuz;Etiopía
+Lou Nuer;Sudán del Sur
+Dassanetch;Etiopía
+Murle;Etiopía
+Oromo;Etiopía
+Gedeo;Etiopía
+OLA;Etiopía
+Amhara, Guraghe;Etiopía
+Amhara, Oromo, Shinasha;Etiopía
+Agaw, Amhara;Etiopía
+Government of Eritrea, Government of Ethiopia;Eritrea
+Fano;Etiopía
+Agaw, Amhara, Shinasha;Etiopía
+OLA - Fekade Abdisa faction;Etiopía
+Government of Spain;España
+al-Qaida;Afganistán
+Government of Gambia;Gambia
+Government of Georgia;Georgia
+Republic of Abkhazia;Georgia
+Government of United Kingdom;Reino Unido
+Kusasi;Ghana
+Government of Guatemala;Guatemala
+Mara 18 (Guatemala);Guatemala
+Government of Guinea;Guinea
+Torma;Kenia
+Kpelle;Liberia
+Government of Guinea-Bissau;Guinea-Bissau
+Buxton gang;Guyana
+Government of Haiti;Haiti
+Supporters of Jean-Bertrand Aristide;Haiti
+G9 an Fanmi e Alye;Haiti
+Delmas 19 gang , Delmas 6 gang, Delmas 95 gang, Nan Barozi gang, Nan Belekou gang, Nan Boston gang, Nan Chabón gang, Nan Ti Bwa gang, Pilate Base gang, Simon Pele gang, Wharf de Jeremie gang;Haiti
+400 Mawozo;Haiti
+5 segon, Canaan 2 gang;Haiti
+Grand Ravine gang;Haiti
+G Pep;Haiti
+Terre Noire;Haiti
+Mara Salvatrucha (Honduras);Honduras
+Mara 18 (Honduras);Honduras
+Paisas (Honduras);Colombia
+PWG;India
+MCC;India
+NSCN-IM;India
+ATTF;India
+NLFT;India
+Sikh insurgents;India
+ULFA;India
+NDFB;Nigeria
+BLTF;India
+Ranvir Sena;India
+UPDS;India
+VHP;India
+DHD;India
+KRA;India
+HPC;India
+Indian Mujahideen;India
+NDFB - RD;Nigeria
+Lashkar-e-Taiba;Pakistan
+ABSU;India
+PCPA;India
+PLFI;India
+Bodo;India
+Hizbul-Mujahideen;India
+Kuki;India
+Hindus (India);India
+NSCN-K;India
+Bangladeshi Immigrants;Bangladés
+Assamese;India
+Al-Umma;India
+NDFB-S;Nigeria
+Meitei;India
+GAM;Indonesia
+Jemaah Islamiya;Indonesia
+Laskar Jihad;Indonesia
+Christians (Indonesia);Indonesia
+Government of Turkey;Turquía
+Ansar al-Islam;Irak
+PKK;Turquía
+1920 Revolution Brigades;Irak
+al-Mahdi Army;Irak
+PIJ;Palestine
+Hamas;Palestine
+AMB;Irak
+Fatah;Palestine
+Government of Jordan;Jordan
+SLDF;Kenia
+Kalenjin;Indonesia
+Kikuyu;Kenia
+Toposa;Sudán del Sur
+Pokot;Kenia
+Marakwet;Kenia
+Matheniko Karimojong;Uganda
+Samburu;Kenia
+Degodia;Kenia
+Orma;Kenia
+Chiebiliew Yoal (Lou Nuer);Sudán del Sur
+Kyrgyz;Kirguistán
+Government of Kyrgyzstan;Kirguistán
+Government of Laos;Laos
+Government of Lebanon;Líbano
+Amal;Líbano
+Forces of Michel Aoun;Líbano
+Alawite (Lebanon);Líbano
+Brigades of Aisha;Libya
+Government of Lesotho;Lesotho
+Government of Liberia;Liberia
+NPFL;Liberia
+INPFL;Liberia
+LURD;Liberia
+LPC;Liberia
+ULIMO - J;Liberia
+ULIMO - K;Liberia
+ULIMO;Liberia
+ASG;Filipinas
+Government of Malaysia;Malasia
+MPGK;Myanmar
+Dogon;Mali
+CMA;Mali
+MAA;Mali
+Dozos (Mali);Mali
+Daoussak (Tuareg);Mali
+GATIA, MSA;Mali
+GATIA;Mali
+Dan na Ambassagou;Mali
+Government of Mauritania;Mauritania
+Government of Mexico;Mexico
+Paz y Justicia;Mexico
+Los Zetas;Mexico
+Tijuana Cartel;Mexico
+Beltrán Leyva Cartel;Mexico
+La Familia;Mexico
+Los Zetas - Cártel del Noreste faction;Mexico
+Autodefensas Unidas de Michoacán;Mexico
+Gulf Cartel - Ramirez Treviño faction;Mexico
+La Mochomera;Mexico
+Gulf Cartel - Dragones de Sheyla faction;Mexico
+Sinaloa Cartel - Los Chavez Matamoros faction;Mexico
+Los Ardillos;Mexico
+Sinaloa Cartel - Los Memos faction;Mexico
+Sinaloa Cartel - El Pepillo faction;Mexico
+Los Zetas - Jorge Ivan Hernandez Cantu faction;Mexico
+Gulf Cartel, Los Zetas;Mexico
+Fuerza Anti Unión;Mexico
+Los Aztecas;Mexico
+CRAC-PF;Mexico
+Gulf Cartel, La Familia, Sinaloa Cartel;Mexico
+Cartel del Sur;Mexico
+Grupo Escorpion;Mexico
+Los Colombianos;Colombia
+Los Rusos, UPOEG;Mexico
+Carteles Unidos, Guerreros Unidos;Mexico
+Government of Morocco;Marruecos
+Government of Tanzania;Tanzania
+Renamo;Mozambique
+Naparama;Mozambique
+ASWJ;Mozambique
+Government of Nepal;Nepal
+CPN-M;Nepal
+Government of Nicaragua;Nicaragua
+Djerma (Zherma);Niger
+Bakassi boys;Nigeria
+Supporters of ACN;Nigeria
+Supporters of ANPP;Nigeria
+Fulani;Nigeria
+Hausa;Nigeria
+Ijaw;Nigeria
+Jukun;Nigeria
+Eleme;Nigeria
+Ogoni;Nigeria
+Christians (Nigeria);Nigeria
+Birom;Nigeria
+Deebam;Nigeria
+Alago;Nigeria
+Greenlanders;Nigeria
+Atakar;Turquía
+Agatu;Nigeria
+Eggon;Nigeria
+Kuteb;Nigeria
+Supporters of APC;Nigeria
+Ikot-Offiong community;Nigeria
+Igbo;Nigeria
+IPOB;Nigeria
+Wanhihem community;Nigeria
+Bwatiye;Nigeria
+Bassa Kwomu;Nigeria
+Yan Sakai;Nigeria
+Lunguda;Nigeria
+Ikurav (Tiv);Nigeria 
+Abugbe (Agatu);Nigeria
+Jole;Nigeria
+Ichen;Nigeria
+Chabo;Nigeria
+Atyap;Nigeria
+Agworok (Atyap);Nigeria
+Bonta Boys;Nigeria
+Ezza;Nigeria
+Chawai;Nigeria
+Karimjo;Nigeria
+Chain Guys;Nigeria
+BLA;Pakistan
+LeJ;Pakistan
+UBA;Pakistan
+IMU;Pakistan
+Lashkar of Orakzai tribe;Pakistan
+Lashkar-e-Islam;Pakistan
+Mohajir;Indonesia
+Jatoi;Pakistan
+Shia (Pakistan);Pakistan
+Supporters of MQM;Pakistan
+Lashkar of Mohmand tribe;Pakistan
+Ansaar ul-Islam;Pakistan
+TTP-KM;Pakistan
+Jaish-ul-Islam;Pakistan
+Government of Panama;Panama
+Government of Papua New Guinea;Papúa Nueva Guinea
+Wagia subclan of Takima;Turquía
+Unjamap;Papúa Nueva Guinea
+Akibu;Papúa Nueva Guinea
+Oi Kuru;Papúa Nueva Guinea
+Agarabi;Papúa Nueva Guinea
+Aiyala;Papúa Nueva Guinea
+Pasal;Papúa Nueva Guinea
+Kuboma;Papúa Nueva Guinea
+Government of Peru;Peru
+Government of Ecuador;Ecuador
+Sendero Luminoso;Peru
+MRTA;Peru
+MILF;Filipinas
+Ampatuan militia;Filipinas
+Al-Khobar;Arabia Saudita
+Forces of Jing Caludtiag;Indonesia
+Christians (Philippines);Filipinas
+BIFM;Rwanda
+Government of Romania;Romania
+FDLR-FOCA;República Democrática del Congo
+ALiR;Rwanda
+Government of DR Congo (Zaire);República Democrática del Congo
+RMDC;Senegal
+Government of Yemen (North Yemen);Yemen
+Government of Senegal;Senegal
+MFDC;Senegal
+MFDC Front Nord - MD;Senegal
+Government of Sierra Leone;Sierra Leone
+AFRC;Sierra Leone
+Abtisame subclan of Galje'el clan (Hawiye);Somalia
+Agon-Yar subclan of Abgal clan (Hawiye);Somalia
+Ahlu Sunna Waljamaca;Somalia
+Dir clan;Somalia
+Forces of Abdullahi Yusuf;Somalia
+Mohamed Muse subclan of Abgal clan (Hawiye);Somalia
+RRA;Somalia
+Sa'ad subclan of Habar Gidir clan (Hawiye);Somalia
+USC/SSA;Somalia
+Abdalleh-Agon-Yar subclan of Abgal clan (Hawiye);Somalia
+SPM;Somalia
+Ayr subclan of Habar Gidir clan (Hawiye);Somalia
+Forces of Abdurahman Ahmed Ali 'Tur';Somalia
+Garre subclan of Digil clan (Digil-Mirifle);Somalia
+Habar Gidir clan (Hawiye);Somalia
+AIAI;Somalia
+Mujahideen in the Golis Mountains;Somalia
+SSC-Khatumo Administration;Somalia
+Bahararsame subclan of Dhulbahante clan (Darod);Somalia
+Biide subclan of Habar Jeclo (Isaaq);Somalia
+Majerteen subclan (Darod);Somalia
+Government of South Africa;Sudáfrica
+CATA;Sudáfrica
+Supporters of ANC;Sudáfrica
+NUM;Sudáfrica
+Black;Sudáfrica
+SLM/A;Sudan
+Government of South Sudan;Sudán del Sur
+Agar Dinka;Sudán del Sur
+Bor Dinka;Sudán del Sur
+Dinka;Sudán del Sur
+Jikany Nuer;Sudán del Sur
+Misseriya;Sudan
+Gony Dinka;Sudán del Sur
+Bul Nuer;Sudán del Sur
+SPLM/A - IO;Sudán del Sur
+Aguok;Sudán del Sur
+Luac Jang Dinka;Sudán del Sur
+Kuei Dinka, Pakam Dinka;Sudán del Sur
+Panyar Dinka;Sudán del Sur
+Aliap Dinka;Sudán del Sur
+Pakam Dinka;Sudán del Sur
+NAS;Sudán del Sur
+Ingessana;Sudan
+Ayiel Dinka;Sudán del Sur
+Jalwau Dinka;Sudán del Sur
+Jie;Indonesia
+Gok Dinka, Jalwau Dinka;Sudán del Sur
+Gak Dinka;Sudán del Sur
+Latuka;Sudán del Sur
+MDF;Sudán del Sur
+Apuk Padoc;Sudán del Sur
+Bor Dinka, Lou Nuer;Sudán del Sur
+Bor Dinka, Gawaar Nuer, Lou Nuer;Sudán del Sur
+Gawaar Nuer;Sudán del Sur
+Balanda;Sudán del Sur
+Cie Kho;Sudán del Sur
+Twic Dinka;Sudán del Sur
+Buya, Murle, Tenet;Sudán del Sur
+GICM;Syria
+Government of Sri Lanka;Sri Lanka
+JVP;Sri Lanka
+LTTE;Sri Lanka
+EPRLF;Sri Lanka
+Supporters of PA;Syria
+SLM/A - MM;Sudan
+SSDF;Syria
+Habaniya;Sudan
+Hol Dinka;Sudán del Sur
+Ma'aliyah;Sudan
+Rizeigat Abbala;Sudan
+Masalit;Sudan
+Al-Zayadia;Sudan
+Beni Hussein;Sudan
+Hamar;Sudan
+Awlad Omran clan (Misseriya);Sudan
+Mahadi;Sudan
+SLM/A - MA;Sudan
+Beni Amir;Sudan
+Fur;Sudan
+Mahariya, Mima;Sudan
+Kawahla, Kenana, Nuba Logan;Sudan
+Dar Ali (Hawazma);Sudan
+Misseriya Jebel;Sudan
+Gimir;Sudan
+Ghuraba al-Sham, Jabhat Fateh al-Sham;Syria
+IS, Jabhat Fateh al-Sham;Irak
+Jabhat al-Akrad, PYD;Syria
+al-Tawhid Brigade;Syria
+Ahfad al Rasoul Brigade, Ahrar al-Sham, IS, Islamic Kurdish Front, Jabhat Fateh al-Sham;Irak
+Ahrar al-Sham, al-Tawhid Brigade, IS, Jabhat Fateh al-Sham;Irak
+Ahfad al Rasoul Brigade;Syria
+Syrian insurgents;Syria
+Jabhat Fateh al-Sham;Syria
+Harkat Hazm;Syria
+Jabhat Fateh al-Sham, Liwa al-Aqsa;Syria
+PYD;Syria
+Aknaf Bait al-Maqdis, Jaysh al-Islam, Sham al-Rasul Brigade, Southern Front;Irak
+Jaysh al Fatah Idlib;Palestine
+Ahrar al-Sham;Syria
+SDF;Syria
+Eastern Qalamoun Operations Room;Syria
+Euphrates Vulcano;Syria
+Fatah Halab;Syria
+Fatah Halab, Jabhat Fateh al-Sham;Syria
+Ahrar al-Sham, Jabhat Fateh al-Sham;Syria
+Ahrar al-Sham, Jabhat Fateh al-Sham, Southern Front;Syria
+Mare’ Operations Room;Syria
+Ahrar al-Sham, Furqan Brigades, Jabhat Fateh al-Sham, Jaysh al-Islam, Yarmouk Army;Syria
+Hawar Kilis Operations Room;Syria
+Jaysh al-Islam, Jaysh Usud al-Sharqiya, Martyr Lieutenant Ahmed Abdou Brigades, Rahman Corps;Syria
+Eastern Ghouta Unified Military Command;Syria
+Jaysh al-Islam;Syria
+Nour al-Din Zenki;Syria
+Liwa al-Aqsa;Syria
+Ahrar al-Sham, FSA, HTS, Jaysh al-Islam;Syria
+Ahrar al-Sham, HTS, Southern Front;Syria
+Syrian Liberation Front;Syria
+Suqour al-Sham, Syrian Liberation Front;Syria
+HTS;Syria
+Aknaf Bait al-Maqdis, HTS, Jaysh al-Islam;Irak
+National Front for Liberation;Syria
+National Front for Liberation, SNA;Syria
+16th Division, Islamic Front, Jabhat Fateh al-Sham;Syria
+Jabhat Fateh al-Sham, Rahman Corps;Syria
+Aknaf Bait al-Maqdis, Jabhat Fateh al-Sham, Jaysh al-Islam, Sons of Yarmouk Movement, Southern Front;Irak
+Aknaf Bait al-Maqdis, HTS, Jaysh al-Islam, Sons of Yarmouk Movement, Southern Front;Irak
+Ahrar al-Sham, Jabhat Fateh al-Sham, Jaysh al-Islam, Jaysh Usud al-Sharqiya, Martyr Lieutenant Ahmed Abdou Brigades, Rahman Corps;Syria
+23rd Division, Ahrar al-Sham, Jaysh al Nasr, Jaysh al-Nukhba, Nour al-Din Zenki, Sham Legion, SNA;Syria
+23rd Division, Jaysh al Nasr, Jaysh al-Nukhba, Sham Legion, SNA, Syrian Liberation Front;Syria
+National Front for Liberation, SNA, Syrian Liberation Front;Syria
+Euphrates Islamic Liberation Front, Islamic Front, Jabhat Fateh al-Sham, Liwa Thuwar ar-Raqqa;Syria
+Ahrar Ghurayan;Syria
+Authenticity and Development Front, Islamic Front, Jabhat Fateh al-Sham;Syria
+Dawn of Freedom Brigades;Syria
+Dawn of Freedom Brigades, Euphrates Islamic Liberation Front, Islamic Front, Jabhat al-Akrad, Liwa Thuwar ar-Raqqa;Syria
+Dawn of Freedom Brigades, Jabhat al-Akrad, Northern Storm Brigade;Syria
+Baz al-Islamiya, Dawn of Freedom Brigades, Islamic Front, Jabhat al-Akrad, Jabhat Fateh al-Sham, Liwa al-Sultan Murad, Majd al-Sham;Syria
+Dawn of Freedom Brigades, Harkat Hazm, Islamic Front, Jabhat al-Akrad, Jabhat Fateh al-Sham, Mujahideen Army, Nour al-Din Zenki, Sham Legion;Syria
+Authenticity and Development Front;Indonesia
+IS, Syrian insurgents;Irak
+Ahfad al Rasoul Brigade, Ahrar al-Sham, al-Farouq Brigades, Ghuraba al-Sham, IS, Jabhat Fateh al-Sham, Jazeera-Euphrates Liberation Front, Liwa al-Fateh;Irak
+Hamza Asadullah Brigade;Syria
+Jabhat Fateh al-Sham, Salahadin Brigade;Syria
+Ahrar al-Sham, al-Tawhid Brigade, IS, Islamic Kurdish Front, Jabhat Fateh al-Sham;Irak
+Ahrar al-Sharqiya;Syria
+Army of Maoata al-Islami, Authenticity and Development Front, Islamic Front, Jabhat Fateh al-Sham;Syria
+Deir ez Zor Military Council;Syria
+Patani insurgents;Tailandia
+Government of Togo;Togo
+Government of Tunisia;Túnez
+THKP-C Acilciler;Turquía
+UPA;Uganda
+ADF;Uganda
+Alur;Uganda
+Hema;República Democrática del Congo
+Bakonzo;Uganda
+Government of Ukraine;Ucrania
+Supporters of independence for Eastern Ukraine;Ucrania
+UDA;Uganda
+Government of Venezuela;Venezuela
+Sabaneta - Pavilion I gang;España
+Yare I - The Towers sector gang;Uganda
+Ansarallah;Yemen
+AQAP;Yemen
+Forces of the Presidential Leadership Council;Yemen
+Abu al-Abbas Brigades;Yemen
+Giants Brigade, STC;Yemen
+Government of Zimbabwe (Rhodesia);Zimbabwe
+Civilians;Afganistán
+NRF;Afganistán
+AFF;Afganistán
+Zinchigal;Afganistán
+FLEC-FAC-TN;Angola
+RSO;Myanmar
+KNF;Bangladés
+Sindicato do Crime;Brazil
+Família Terror Amapá;Brazil
+Mursi;Etiopía
+Tigray;Etiopía
+BJP;India
+DFLP;Palestine
+Santa Rosa de Lima Cartel;Mexico
+Gulf Cartel - Los Metros faction;Mexico
+Sinaloa Cartel - Los Mayos;Mexico
+Los Tlacos;Mexico
+Los Rojos;Nigeria
+Zetas Vieja Escuela;Mexico
+Eyie;Sudán del Sur
+Jaish al-Adl;Pakistan
+Sakalin;Sudán del Sur
+Fancy Boys Gang;Estados Unidos
+Shiluk;Sudán del Sur
+Salamat Baggara;Sudan
+Hizb-i Islami-yi Afghanistan - Khalis faction;Afganistán
+Military faction (forces of Shahnawaz Tanay);República Democrática del Congo
+Shura-yi Nazar-i Shomali;Mali
+Junbish-i Milli-yi Islami;Afganistán
+Government of United Kingdom, Government of United States of America;Reino Unido
+High Council of Afghanistan Islamic Emirate;Afganistán
+AIS;Algeria
+MUJAO;Mali
+Idnan (Tuareg);Mali
+FLEC-R;Angola
+FLEC-FAC;Angola
+Republic of Artsakh;Armenia
+Supporters of BNP;Bangladés
+PBCP;Bangladés
+Supporters of Jamaat-e-Islami;Bangladés
+ULA;Myanmar
+PBCP-J;Bangladés
+Qaqachaca;Bolivia
+Terceiro Comando;Brazil
+Sujeirinha gang;Brazil
+Terceiro Comando Puro;Brazil
+Estados Unidos;Brazil
+GDE;Brazil
+Bala na Cara;Brazil
+Katiara;Pakistan
+Comando da Paz;Brazil
+PCM;Mexico
+Holanda;Etiopía
+Massa;República Centroafricana
+Frolina;Burundi
+Tutsi;Rwanda
+FNL-Ubugabo-Burihabwa;Burundi
+Military faction (forces of Godefroid Niyombare);Burundi
+FPB;Burundi
+Kotoko;Camerún
+Musgum;Camerún
+Rock Machine;Canada
+Forces of Francois Bozize;República Centroafricana
+CPJP;República Centroafricana
+Muslims (CAR);República Centroafricana
+RJ;República Centroafricana
+Peuhl militia (Zemio);República Centroafricana
+MLCJ;República Centroafricana
+MLCJ, PRNC, RPRC;República Centroafricana
+MLCJ, RPRC;República Centroafricana
+CNR;Chad
+MDJT;Chad
+AN;Chad
+Zaghawa;Chad
+CCMSR;Chad
+Mouro;Chad
+Herders (Chad);Chad
+FACT;Chad
+Kagal, Kibete;República Democrática del Congo
+Bulala;República Democrática del Congo
+KIO;Myanmar
+MNDAA;Myanmar
+ETIM;China
+ELN, FARC;Colombia
+EPL - Megateo;Colombia
+ELN, FARC-EMC;Colombia
+Los Pepes;Colombia
+Ninjas;Congo
+Serbian Republic of Krajina;Indonesia
+Autonomous Province of Western Bosnia;Bosnia-Herzegovina
+R7;República Dominicana
+Los Tiguerones;República Dominicana
+al-Gama'a al-Islamiyya;Egipto
+FMLN;El Salvador
+Mara 18 (El Salvador);El Salvador
+EIJM - AS;Etiopía
+EPRDF;Etiopía
+EPLF;Eritrea
+ONLF;Etiopía
+OLF;Etiopía
+Kereyou;Etiopía
+Gabra, Garre;Etiopía
+Guji;Indonesia
+Gura;Etiopía
+Turkana;Kenia
+Somali;Mali
+Garre;Etiopía
+Highlanders;Etiopía
+Gamo, Guraghe;Etiopía
+Qimant;Etiopía
+Military faction (forces of Asaminew Tsige);Etiopía
+GLF;Etiopía
+ETA;España
+Zviadists;Georgia
+Republic of South Ossetia;Georgia
+Chechen Republic of Ichkeria;Rusia
+White Legion;Georgia
+PIRA;Reino Unido
+Mamprusi;Ghana
+URNG;Guatemala
+Mara Salvatrucha (Guatemala);Guatemala
+Torma Manian;Kenia
+Malinké;Mali
+Konianke, Malinké;Mali
+Military Junta for the Consolidation of Democracy, Peace and Justice;Haiti
+FLRN;Haiti
+OP Lavalas;Haiti
+Supporters of Roger Lafontant;Haiti
+Kraze Baryè;Haiti
+Pesetas (Honduras);Honduras
+PLA;India
+UNLF;India
+KCP;India
+PREPAK;India
+PULF;India
+NSCN-U;India
+Santhal;India
+JKLF;India
+Naga;India
+Muslims (India);India
+NSCN-K-K;India
+CNF;India
+NLFT-B;India
+CPI-ML-J;India
+GNLA;India
+Bihari;India
+UNLFW;India
+Pangal;India
+CNRT;Indonesia
+Muslims (Indonesia);Indonesia
+KDPI;Iran
+MEK;Iran
+PJAK;Iran
+Jondullah;Iran
+SCIRI;Irak
+RJF;Irak
+KDP;Irak
+PUK;Irak
+Government of Kuwait;Kuwait
+JRTN;Irak
+PFLP;Palestine
+PNA;Palestine
+PRC;Irak
+Jund Ansar Allah;Irak
+Southern Front;Irak
+Luo;Kenia
+Kisii, Luo;Kenia
+Maasai;Kenia
+Gabra;Kenia
+Pokomo;Kenia
+Burji, Gabra;Indonesia
+Cie Bol;Kenia
+Uzbek;Kirguistán
+LRM;Líbano
+PFLP-GC;Palestine
+Lebanese Forces;Líbano
+PSP;Líbano
+SLA;Líbano
+Sunni (Lebanon);Líbano
+HTS, Saraya Ahl al-Sham;Syria
+Military faction (Lesotho);Lesotho
+Sultanate of Sulu;Malasia
+FIAA;Mali
+MUJAO, Signed-in-Blood Battalion;Mali
+FPLA;Mali
+Ansar Dine;Mali
+Military faction (Red Berets);Mali
+Signed-in-Blood Battalion;Mali
+al-Murabitun;Mali
+FLM;Mali
+CM-FPR, GATIA, MAA;Mali
+MSA;Mali
+CSP-PSD;Mexico
+EZLN;Mexico
+EPR;Mexico
+Tijuana Cartel - El Teo;Mexico
+Beltrán Leyva Cartel - Valdez Villareal faction;Mexico
+Los Caballeros Templarios;Mexico
+La Barredora;Mexico
+La Resistencia;Mexico
+Gulf Cartel - Villareal faction;Mexico
+Gulf Cartel - Los Fresitas faction;Mexico
+Sinaloa Cartel - Los Salgueiro faction;Mexico
+Sinaloa Cartel - Los Salazar faction;Mexico
+Forces of Damaso;Mexico
+Sinaloa Cartel - Los 28 faction;Mexico
+Los Zetas - Juan Pedro Salvador Saldivar Farias faction;Mexico
+La Nueva Familia;Mexico
+Nueva Plaza Cartel;Mexico
+La Union de Tepito;Mexico
+La Linea;Mexico
+Los Virus;Mexico
+Gulf Cartel - Los Ciclones faction;Mexico
+Los Mayas;Mexico
+Pájaros Sierra;Mexico
+POLISARIO;Sahara Occidental
+Contras;Nicaragua
+CRA;Mexico
+FLAA;Niger
+MNJ;Niger
+Tuareg;Mali
+Banibangou Vigilance Committee;Niger
+Ahlul Sunnah Jamaa;Nigeria
+Supporters of PDP;Nigeria
+Yugur;Nigeria
+Mambila;Nigeria
+Yoruba;Nigeria
+Wurukum;Nigeria
+Ilaje;Nigeria
+Tiv;Nigeria
+Okrika (Ijaw);Nigeria
+Tarok;Nigeria
+Muslims (Nigeria);Nigeria
+Deewell;Nigeria
+NDV;Nigeria
+Maphite;Nigeria
+Yan Gora;Nigeria
+Idoma;Nigeria
+Gwandere;Nigeria
+Oku Iboku community;Nigeria
+Wanikade community;Nigeria
+Kadara;Nigeria
+Irigwe;Nigeria
+Egbura Mozum;Nigeria
+Yandang;Nigeria
+Izzi (Igbo);Nigeria
+Waja;Nigeria
+Shitile (Tiv);Nigeria
+Agbaduma (Agatu);Nigeria
+Shomo;Nigeria
+Mwaghavul;Nigeria
+Korri;Nigeria
+Full Force;Nigeria
+Mwaghavul , Ron;Nigeria
+BLF;Pakistan
+Baloch Ittehad;Pakistan
+BRA;Pakistan
+MQM;Pakistan
+Lashkhar of Wazir tribe;Pakistan
+Lashkar of Zakakhel tribe;Pakistan
+Lashkar of Akakhel tribe;Pakistan
+Sindhi;Pakistan
+Meher;Pakistan
+Sunni (Pakistan);Pakistan
+Supporters of PPP;Pakistan
+Tawheed ul-Islam;Pakistan
+TTP - TA;Pakistan
+TTP-SM;Pakistan
+Jamaat-ul-Ahrar;Pakistan
+TJP;Pakistan
+Military faction (forces of Moisés Giroldi);Panama
+Wayai subclan of Takima;Turquía
+Wogia-Tunjup;Algeria
+Tonakau;Papúa Nueva Guinea
+Libe Koi;Papúa Nueva Guinea
+Tapo;Papúa Nueva Guinea
+Nomali;Mali
+Yukap;Papúa Nueva Guinea
+Kulumata;Papúa Nueva Guinea
+Military faction (forces of Honasan, Abenina & Zumel);Benin
+MNLF;Filipinas
+MNLF - NM;Filipinas
+Forces of Randy Karon;Papúa Nueva Guinea
+Muslims (Philippines);Filipinas
+Maute group;Filipinas
+al-Harakat al-Islamiyah;Somalia
+BIFM-K;Rwanda
+M23;República Democrática del Congo
+FDLR-RUD;República Democrática del Congo
+MFDC - S;Senegal
+RUF;Sierra Leone
+Kamajors;Sierra Leone
+SNM;Somalia
+USC/SNA;Syria
+SRRC;Somalia
+ARS/UIC;Somalia
+Hizbul Islam;Somalia
+Afi subclan of Galje'el clan (Hawiye);Somalia
+Warsangeli subclan of Abgal clan (Hawiye);Somalia
+Forces of Jama Ali Jama;Somalia
+RRA - MH;Somalia
+Suleiman subclan of Habar Gidir clan (Hawiye);Somalia
+Saleban Abdalla subclan of Surre clan (Dir);Somalia
+USC/SSA - OMF;Somalia
+Eli-Agon-Yar subclan of Abgal clan (Hawiye);Somalia
+Forces of Omar Jess;Somalia
+Republic of Somaliland;Somalia
+Jiddo subclan of Digil clan (Digil-Mirifle);Indonesia
+Xawaadle clan (Hawiye);Somalia
+SPM/SNA;Syria
+Puntland State of Somalia;Somalia
+Qayaad subclan of Dhulbahante clan (Darod);Somalia
+Aaro Aaro;Somalia
+Ma'awisley;Somalia
+Sa'ad subclan of Habar Yonis (Isaaq);Somalia
+Awramale subclan (Darod);Somalia
+SWAPO;Namibia
+Codeta;España
+Supporters of IFP;Sudáfrica
+Uwusa;Sudáfrica
+Indian;India
+Gok Dinka;Sudán del Sur
+Mundari;Sudán del Sur
+Ngok Dinka;Sudán del Sur
+Thiyic Dinka;Sudán del Sur
+SRF;Sudán del Sur
+Apuk Giir;Sudán del Sur
+Rup Dinka;Sudán del Sur
+Waat Dinka;Sudán del Sur
+Atuot Dinka;Sudán del Sur
+Uduk;Sudán del Sur
+Luac Jang Dinka, Thiyic Dinka;Sudán del Sur
+Manuer Dinka;Sudán del Sur
+Pari;Sudán del Sur
+SPLM/A-North;Sudán del Sur
+Pagok Dinka;Sudán del Sur
+Atok Buk;Sudán del Sur
+Buya;Sudán del Sur
+Lou Paher;Sudán del Sur
+Lou Paher, Thiyic Dinka;Sudán del Sur
+Azande;Sudán del Sur
+Cie Guandong;Sudán del Sur
+SPLM/A - IO - Kitgwang;Sudán del Sur
+Baac;Sudán del Sur
+LTTE - K;Sri Lanka
+PLOTE;Sri Lanka
+Supporters of UNP;Sri Lanka
+JEM;Sudan
+Rizeigat Baggara;Sudan
+Terjam;Sudan
+SPLM/A - AH;Sudan
+SPLM/A - WN;Sudan
+Berti;Sudan
+SARC;Sudan
+Darfur Joint Resistance Forces;Sudan
+Awlad Serur clan (Misseriya);Sudan
+SLM/A - SB;Sudan
+Nuba;Sudan
+Newiba, Rizeigat Abbala;Sudan
+Funj;Sudan
+Taisha;Sudan
+Kenana;Sudan
+Rizeigat;Sudan
+Awlad Rashid;Sudan
+Islamic Front;Syria
+Mujahideen Army;Syria
+Islamic Front, Mujahideen Army, SRF;Syria
+Islamic Front, Jabhat Fateh al-Sham;Syria
+Islamic Front, Jabhat Fateh al-Sham, Mujahideen Army;Syria
+Jaysh al-Sanadid, Khabour Guards, MFS, PYD;Syria
+Jaysh al-Sanadid, MFS, PYD;Syria
+NSA;Syria
+Jaysh al-Jihad (Saraya al- Jihad);Indonesia
+Tahrir al- Sham Army;Syria
+Jaysh al-Asha'er;Syria
+HTS, Rahman Corps;Syria
+Hamza Division, Liwa al-Sultan Murad;Syria
+HTS, Southern Front;Syria
+Tanzim Hurras ad-Din;Syria
+Jaysh al-Sanadid, PYD;Syria
+Tajamu Shuhada al-Sharqiya;Syria
+al-Qa'qa Brigade, Army of Ahl al-Sunni wal Jamaa , Army of al-Ikhlas, Army of Maoata al-Islami, Authenticity and Development Front, Bayareq al-Shaaitat , Islamic Front, Jabhat Fateh al-Sham, Jaish al-Muhajireen wal-Ansar, Liwa al-Qadisiya;Pakistan
+Islamic Front, Jabhat al-Akrad, Jabhat Fateh al-Sham, Mujahideen Army, SRF;Syria
+Islamic Front, Jabhat al-Akrad, Mujahideen Army, SRF;Syria
+Nour al-Din Zenki, Sham Legion;Syria
+Islamic Front, SRF;Syria
+Jabhat Fateh al-Sham, Liwa al-Qadisiya, Omar al-Mukhtar Battalion;Syria
+Northern Storm Brigade;Syria
+Islamic Front, Jabhat al-Akrad, Liwa Thuwar ar-Raqqa;Syria
+Islamic Front, Northern Storm Brigade;Syria
+Islamic Front, Jabhat Fateh al-Sham, Liwa al-Jihad fi Sabeel Allah, Liwa Thuwar ar-Raqqa;Syria
+Jabhat al-Akrad;Syria
+al-Moutasem Brigade, Hamza Division;Syria
+Forces of Mullo Abdullo;Tajikistan
+JAK-T;Tajikistan
+DHKP-C;Turquía
+MKP;Tajikistan
+TAK;Turquía
+TKP-ML;Turquía
+UNRF II;Uganda
+Lendu;República Democrática del Congo
+Bamba;Uganda
+Maidan;Ucrania
+Supporters of Ukrainian unity;Ucrania
+DPR;Ucrania
+LPR;Ucrania
+United Armed Forces of Novorossiya;Ucrania
+RIRA;Reino Unido
+Sabaneta - Re-education sector gang;España
+Yare I - The Workshop sector gang;Uganda
+GPC;Yemen
+STC;Yemen
+Islah;Yemen
+Jaysh al-Asha’er;Syria
+Taleban - Mola Khel faction;Afganistán

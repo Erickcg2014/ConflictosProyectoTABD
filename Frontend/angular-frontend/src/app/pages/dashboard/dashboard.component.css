@@ -1,0 +1,25 @@
+/* Dashboard specific styles */
+
+.container {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card hover effects */
+.bg-card {
+  transition: all 0.3s ease;
+}
+
+.bg-card:hover {
+  transform: translateY(-2px);
+}

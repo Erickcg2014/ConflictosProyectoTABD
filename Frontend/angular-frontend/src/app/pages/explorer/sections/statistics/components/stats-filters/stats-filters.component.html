@@ -1,0 +1,97 @@
+<div class="filters-container">
+  <!-- ============================================ -->
+  <!-- FILA 1: FECHAS Y REGIÓN -->
+  <!-- ============================================ -->
+  <div class="filters-row">
+    <!-- Rango de Fechas -->
+    <div class="filter-group date-group">
+      <label class="filter-label">
+        <span class="material-icons">calendar_today</span>
+        Rango de Fechas
+      </label>
+      <div class="date-inputs">
+        <input
+          type="date"
+          [(ngModel)]="localFilters.startDate"
+          class="date-input"
+          min="1989-01-01"
+          max="2024-12-31"
+        />
+        <span class="date-separator">→</span>
+        <input
+          type="date"
+          [(ngModel)]="localFilters.endDate"
+          class="date-input"
+          min="1989-01-01"
+          max="2024-12-31"
+        />
+      </div>
+
+      <!-- Presets de fecha -->
+      <div class="date-presets">
+        <button
+          *ngFor="let preset of datePresets"
+          class="preset-btn"
+          (click)="applyDatePreset(preset)"
+          type="button"
+        >
+          {{ preset.label }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Selector de Región -->
+    <div class="filter-group">
+      <label class="filter-label">
+        <span class="material-icons">public</span>
+        Región
+      </label>
+      <select [(ngModel)]="localFilters.region" class="region-select">
+        <option *ngFor="let region of regions" [value]="region.value">
+          {{ region.label }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- FILA 2: TIPO DE VIOLENCIA -->
+  <!-- ============================================ -->
+  <div class="filters-row">
+    <div class="filter-group violence-types-group">
+      <label class="filter-label">
+        <span class="material-icons">warning</span>
+        Tipo de Violencia
+      </label>
+      <div class="checkbox-group">
+        <label
+          *ngFor="let option of violenceTypeOptions"
+          class="checkbox-label"
+          [class.checked]="option.checked"
+        >
+          <input
+            type="checkbox"
+            [checked]="option.checked"
+            (change)="onViolenceTypeChange(option)"
+          />
+          <span class="checkbox-custom"></span>
+          <span class="checkbox-text">{{ option.label }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- BOTONES DE ACCIÓN -->
+  <!-- ============================================ -->
+  <div class="filters-actions">
+    <button class="btn btn-primary" (click)="applyFilters()">
+      <span class="material-icons">check</span>
+      Aplicar Filtros
+    </button>
+    <button class="btn btn-secondary" (click)="resetFilters()">
+      <span class="material-icons">refresh</span>
+      Resetear
+    </button>
+  </div>
+</div>

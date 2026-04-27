@@ -1,0 +1,27 @@
+.container > div {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover\:shadow-xl {
+  transition: box-shadow 0.3s ease;
+}
+
+/* Links externos */
+a[target="_blank"] {
+  transition: all 0.2s ease;
+}
+
+a[target="_blank"]:hover {
+  transform: translateX(2px);
+}

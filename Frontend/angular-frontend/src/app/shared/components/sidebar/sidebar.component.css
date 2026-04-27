@@ -1,0 +1,84 @@
+/* Scrollbar personalizado para navegación */
+nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Animaciones suaves */
+button {
+  user-select: none;
+}
+
+/* Mejorar hover del toggle button */
+.absolute.-right-4 {
+  transition: all 0.3s ease;
+}
+
+.absolute.-right-4:hover {
+  transform: scale(1.1);
+}
+
+/* Asegurar que el tooltip aparezca sobre todo */
+.group:hover > div[class*="opacity-0"] {
+  z-index: 9999;
+}
+
+/* Efecto de pulso en el indicador activo */
+@keyframes pulse-indicator {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.absolute.left-0.w-1 {
+  animation: pulse-indicator 2s ease-in-out infinite;
+}
+
+/* Ajustar espaciado en modo cerrado */
+aside.w-20 nav {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Mejorar transición del label */
+span.whitespace-nowrap {
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+/* Sombra suave para el sidebar */
+aside {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Efecto de elevación en hover de botones */
+button.group:hover:not([class*="bg-primary"]) {
+  transform: translateX(2px);
+}
+
+/* Responsive: ocultar automáticamente en móviles */
+@media (max-width: 768px) {
+  aside {
+    transform: translateX(-100%);
+  }
+
+  aside.w-64 {
+    transform: translateX(0);
+  }
+}

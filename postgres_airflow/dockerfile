@@ -1,0 +1,11 @@
+FROM postgres:15
+
+# Variables de entorno para la DB
+ENV POSTGRES_USER=airflow
+ENV POSTGRES_PASSWORD=airflowpwd
+ENV POSTGRES_DB=airflowdb
+
+# Copiar script de inicialización
+COPY init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432

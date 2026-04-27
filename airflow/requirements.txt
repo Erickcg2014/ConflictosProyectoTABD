@@ -1,0 +1,7 @@
+apache-airflow-providers-google
+apache-airflow-providers-postgres
+google-cloud-bigquery
+psycopg2-binary
+pandas
+pyarrow
+neo4j

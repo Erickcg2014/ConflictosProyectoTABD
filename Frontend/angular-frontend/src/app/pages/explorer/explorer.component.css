@@ -1,0 +1,470 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.explorer-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding-top: 64px;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  transition: margin-left 0.3s ease;
+
+  height: 100%;
+}
+
+.content-area.sidebar-open {
+  margin-left: 280px;
+}
+
+.content-area.sidebar-closed {
+  margin-left: 0;
+}
+
+/* ============================================
+   HEADER DE LA SECCIÓN - STICKY
+   ============================================ */
+.section-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: hsl(var(--card));
+  border-bottom: 1px solid hsl(var(--border));
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-icon {
+  color: hsl(var(--primary));
+  font-size: 28px;
+}
+
+.section-info h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+.section-info p {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  margin: 0.25rem 0 0 0;
+}
+
+/* ============================================
+   CONTENEDOR DEL MAPA
+   ============================================ */
+.map-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ============================================
+   LOADING OVERLAY
+   ============================================ */
+#loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   ESTILOS DE CLUSTERING
+   ============================================ */
+.marker-cluster-small {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.9);
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+
+.marker-cluster-medium div {
+  background-color: rgba(241, 211, 87, 0.9);
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.marker-cluster-large {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+
+.marker-cluster-large div {
+  background-color: rgba(253, 156, 115, 0.9);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.marker-cluster {
+  transition: transform 0.2s ease;
+}
+
+.marker-cluster:hover {
+  transform: scale(1.1);
+  z-index: 1000 !important;
+}
+
+.custom-cluster-icon {
+  background: none;
+  border: none;
+}
+
+.custom-cluster {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary)) 0%,
+    hsl(var(--primary)) 100%
+  );
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 3px solid white;
+  transition: all 0.2s ease;
+}
+
+.custom-cluster:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   ESTILOS DE POPUPS
+   ============================================ */
+.cluster-popup {
+  min-width: 200px;
+  padding: 0.5rem;
+}
+
+.cluster-popup h3 {
+  margin: 0 0 0.75rem 0;
+  color: hsl(var(--foreground));
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid hsl(var(--primary));
+  padding-bottom: 0.5rem;
+}
+
+.cluster-popup p {
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.cluster-popup strong {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.btn-zoom {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: hsl(var(--primary));
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-zoom:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-popup {
+  min-width: 250px;
+  padding: 0.5rem;
+}
+
+.event-popup h3 {
+  margin: 0 0 0.75rem 0;
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.event-popup p {
+  margin: 0.4rem 0;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.btn-details {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-details:hover {
+  background: hsl(var(--background));
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary));
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  font-family: inherit;
+}
+
+.leaflet-popup-tip {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   CONTROLES DEL MAPA
+   ============================================ */
+.leaflet-control-zoom {
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom a {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  font-size: 20px !important;
+  transition: all 0.2s ease;
+}
+
+.leaflet-control-zoom a:hover {
+  background: hsl(var(--accent)) !important;
+  color: hsl(var(--primary)) !important;
+}
+
+/* ============================================
+   CONTROLES FLOTANTES DEL MAPA
+   ============================================ */
+.map-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-button {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.control-button:hover {
+  background: hsl(var(--accent));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.control-button .material-icons {
+  color: hsl(var(--foreground));
+  font-size: 24px;
+}
+
+/* ============================================
+   LEYENDA DEL MAPA
+   ============================================ */
+.map-legend {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 1000;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+}
+
+.map-legend h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.legend-color.small {
+  background-color: rgba(110, 204, 57, 0.9);
+}
+
+.legend-color.medium {
+  background-color: rgba(241, 211, 87, 0.9);
+}
+
+.legend-color.large {
+  background-color: rgba(253, 156, 115, 0.9);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .content-area.sidebar-open {
+    margin-left: 0;
+  }
+
+  .section-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .section-info h1 {
+    font-size: 1.25rem;
+  }
+
+  .map-legend {
+    display: none;
+  }
+
+  .map-controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .control-button {
+    width: 38px;
+    height: 38px;
+  }
+}

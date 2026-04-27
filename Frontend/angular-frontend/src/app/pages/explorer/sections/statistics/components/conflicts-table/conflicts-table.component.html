@@ -1,0 +1,191 @@
+<div #tableContainer class="table-container">
+  <!-- ============================================ -->
+  <!-- ESTADO: LOADING -->
+  <!-- ============================================ -->
+  <div *ngIf="!isVisible || isLoading" class="table-placeholder">
+    <div class="placeholder-content">
+      <span class="material-icons rotating">hourglass_empty</span>
+      <p>Cargando conflictos...</p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- TABLA -->
+  <!-- ============================================ -->
+  <div *ngIf="isVisible && !isLoading" class="table-wrapper">
+    <!-- ========================================== -->
+    <!-- TOOLBAR (Búsqueda + Controles) -->
+    <!-- ========================================== -->
+    <div class="table-toolbar">
+      <!-- Búsqueda -->
+      <div class="search-box">
+        <span class="material-icons search-icon">search</span>
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="onSearch()"
+          placeholder="Buscar por nombre, país, actores o región..."
+          class="search-input"
+        />
+        <button
+          *ngIf="searchTerm"
+          class="clear-btn"
+          (click)="clearSearch()"
+          title="Limpiar búsqueda"
+        >
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+
+      <!-- Controles -->
+      <div class="toolbar-controls">
+        <button
+          class="export-btn"
+          (click)="exportData()"
+          title="Exportar datos"
+        >
+          <span class="material-icons">download</span>
+          Exportar
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- INFO BAR -->
+    <!-- ========================================== -->
+    <div class="info-bar">
+      <span class="results-info"> Mostrando conflictos más mortales </span>
+
+      <div class="page-size-selector">
+        <label>Filas por página:</label>
+        <select [(ngModel)]="pageSize" (change)="onPageSizeChange()">
+          <option *ngFor="let size of pageSizeOptions" [value]="size">
+            {{ size }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TABLA -->
+    <!-- ========================================== -->
+    <div class="table-scroll">
+      <table class="conflicts-table">
+        <thead>
+          <tr>
+            <th class="col-rank">#</th>
+            <th class="col-name sortable" (click)="sortBy('name')">
+              <div class="th-content">
+                <span>Conflicto</span>
+                <span class="material-icons sort-icon">{{
+                  getSortIcon("name")
+                }}</span>
+              </div>
+            </th>
+            <th class="col-location">Participantes</th>
+            <th class="col-actors">Actores</th>
+            <th class="col-events sortable" (click)="sortBy('events')">
+              <div class="th-content">
+                <span>Eventos</span>
+                <span class="material-icons sort-icon">{{
+                  getSortIcon("events")
+                }}</span>
+              </div>
+            </th>
+            <th class="col-deaths sortable" (click)="sortBy('deaths')">
+              <div class="th-content">
+                <span>Muertes</span>
+                <span class="material-icons sort-icon">{{
+                  getSortIcon("deaths")
+                }}</span>
+              </div>
+            </th>
+            <th class="col-period sortable" (click)="sortBy('period')">
+              <div class="th-content">
+                <span>Periodo</span>
+                <span class="material-icons sort-icon">{{
+                  getSortIcon("period")
+                }}</span>
+              </div>
+            </th>
+            <th class="col-actions">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let conflict of displayedConflicts; let i = index"
+            class="table-row"
+          >
+            <td class="col-rank">{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+            <td class="col-name">
+              <div class="conflict-name">{{ conflict.name }}</div>
+            </td>
+            <td class="col-location">
+              <div class="location-cell">
+                <span class="country">{{ conflict.countries }}</span>
+                <span class="region">{{ conflict.region }}</span>
+              </div>
+            </td>
+            <td class="col-actors">
+              <div class="actors-cell">{{ conflict.actors }}</div>
+            </td>
+            <td class="col-events">
+              <span class="number-cell">{{
+                formatNumber(conflict.events)
+              }}</span>
+            </td>
+            <td class="col-deaths">
+              <span class="number-cell deaths-highlight">{{
+                formatNumber(conflict.deaths)
+              }}</span>
+            </td>
+            <td class="col-period">
+              <span class="period-cell">{{ conflict.period }}</span>
+            </td>
+            <td class="col-actions">
+              <button
+                class="action-btn"
+                (click)="viewDetails(conflict)"
+                title="Ver detalles"
+              >
+                <span class="material-icons">visibility</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGINACIÓN -->
+    <!-- ========================================== -->
+    <div class="pagination">
+      <button
+        class="page-btn"
+        [disabled]="currentPage === 1"
+        (click)="previousPage()"
+        title="Página anterior"
+      >
+        <span class="material-icons">chevron_left</span>
+      </button>
+
+      <button
+        *ngFor="let page of getPageNumbers()"
+        class="page-btn"
+        [class.active]="page === currentPage"
+        (click)="goToPage(page)"
+      >
+        {{ page }}
+      </button>
+
+      <button
+        class="page-btn"
+        [disabled]="currentPage === totalPages"
+        (click)="nextPage()"
+        title="Página siguiente"
+      >
+        <span class="material-icons">chevron_right</span>
+      </button>
+    </div>
+  </div>
+</div>

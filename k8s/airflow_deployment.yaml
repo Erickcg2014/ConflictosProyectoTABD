@@ -1,0 +1,360 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airflow
+  namespace: wars
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: airflow
+  template:
+    metadata:
+      labels:
+        app: airflow
+    spec:
+      # ===============================
+      # InitContainers
+      # ===============================
+      initContainers:
+        - name: copy-dags
+          image: busybox:latest
+          command:
+            ["sh", "-c", "cp -rL /configmap-dags/* /opt/airflow/dags/ || true"]
+          volumeMounts:
+            - name: dags-configmap
+              mountPath: /configmap-dags
+            - name: dags
+              mountPath: /opt/airflow/dags
+
+        - name: init-airflow-db
+          image: localhost:5000/airflow:latest
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              set -e
+              echo "==========================================="
+              echo "Iniciando migracion de base de datos..."
+              echo "==========================================="
+              airflow db migrate || airflow db init
+              echo "Base de datos lista!"
+
+              echo ""
+              echo "==========================================="
+              echo "Verificando usuario admin..."
+              echo "==========================================="
+              if ! airflow users list 2>/dev/null | grep -q "admin"; then
+                echo "Creando usuario admin..."
+                airflow users create \
+                  --username admin \
+                  --firstname Admin \
+                  --lastname User \
+                  --role Admin \
+                  --email admin@example.com \
+                  --password admin123
+                echo "Usuario admin creado!"
+              else
+                echo "Usuario admin ya existe"
+              fi
+
+              echo ""
+              echo "==========================================="
+              echo "Creando conexiones de Airflow..."
+              echo "==========================================="
+
+              # ===== CONEXIÓN NEO4J AURA =====
+              echo ""
+              echo "[1/2] Configurando Neo4j Aura..."
+              airflow connections delete neo4j_conn 2>/dev/null || echo "  (neo4j_conn no existía)"
+
+              echo "  URI: ${NEO4J_URI}"
+              echo "  User: ${NEO4J_USER}"
+              echo "  Database: ${NEO4J_DATABASE}"
+
+              airflow connections add neo4j_conn \
+                --conn-type generic \
+                --conn-host "${NEO4J_URI}" \
+                --conn-login "${NEO4J_USER}" \
+                --conn-password "${NEO4J_PASSWORD}" \
+                --conn-extra "{\"database\":\"${NEO4J_DATABASE}\",\"uri\":\"${NEO4J_URI}\"}"
+
+              echo "Neo4j Aura configurado"
+              airflow connections get neo4j_conn
+
+              # ===== CONEXIÓN MONGODB ATLAS =====
+              echo ""
+              echo "[2/2] Configurando MongoDB Atlas..."
+              airflow connections delete mongodb_conn 2>/dev/null || echo "  (mongodb_conn no existía)"
+
+              MONGO_URI="${MONGO_ATLAS_URI}"
+              airflow connections add mongodb_conn \
+                --conn-type mongo \
+                --conn-host "$MONGO_URI"
+
+              echo "MongoDB Atlas configurado"
+              airflow connections get mongodb_conn
+
+              echo ""
+              echo "==========================================="
+              echo "INICIALIZACION COMPLETADA"
+              echo "==========================================="
+
+          env:
+            - name: AIRFLOW__CORE__EXECUTOR
+              value: LocalExecutor
+            - name: AIRFLOW__CORE__LOAD_EXAMPLES
+              value: "False"
+            - name: AIRFLOW__CORE__FERNET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: fernet-key
+            - name: AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: postgres-conn
+
+            # ===== NEO4J AURA =====
+            - name: NEO4J_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-uri
+            - name: NEO4J_USER
+              value: "neo4j"
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-password
+            - name: NEO4J_DATABASE
+              value: "neo4j"
+
+            # ===== MONGODB ATLAS =====
+            - name: MONGO_ATLAS_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: mongo-uri
+
+          volumeMounts:
+            - name: credentials
+              mountPath: /opt/airflow/credentials
+              readOnly: true
+
+      # ===============================
+      # Contenedores Principales
+      # ===============================
+      containers:
+        # ===== WEBSERVER =====
+        - name: airflow
+          image: localhost:5000/airflow:latest
+          command: ["airflow", "webserver"]
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+
+          env:
+            - name: AIRFLOW__CORE__EXECUTOR
+              value: LocalExecutor
+            - name: AIRFLOW__CORE__LOAD_EXAMPLES
+              value: "False"
+            - name: AIRFLOW__CORE__DAGS_FOLDER
+              value: /opt/airflow/dags
+            - name: AIRFLOW__CORE__FERNET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: fernet-key
+            - name: AIRFLOW__WEBSERVER__SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: fernet-key
+            - name: AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL
+              value: "30"
+            - name: AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT
+              value: "60"
+            - name: AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: postgres-conn
+
+            # ===== AWS S3 =====
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: aws-access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: aws-secret-access-key
+            - name: S3_BUCKET_NAME
+              value: "wars_dataset"
+            - name: AWS_DEFAULT_REGION
+              value: "us-east-1"
+
+            # ===== BIGQUERY =====
+            - name: BIGQUERY_PROJECT
+              value: "proyectotabd"
+            - name: BIGQUERY_DATASET
+              value: "wars_dataset"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /opt/airflow/credentials/gcp-key.json
+
+            # ===== MONGODB ATLAS =====
+            - name: MONGO_ATLAS_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: mongo-uri
+
+            # ===== NEO4J AURA =====
+            - name: NEO4J_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-uri
+            - name: NEO4J_USER
+              value: "neo4j"
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-password
+            - name: NEO4J_DATABASE
+              value: "neo4j"
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+          volumeMounts:
+            - name: dags
+              mountPath: /opt/airflow/dags
+            - name: credentials
+              mountPath: /opt/airflow/credentials
+              readOnly: true
+
+        # ===== SCHEDULER =====
+        - name: airflow-scheduler
+          image: localhost:5000/airflow:latest
+          command: ["airflow", "scheduler"]
+          imagePullPolicy: IfNotPresent
+
+          env:
+            - name: AIRFLOW__CORE__EXECUTOR
+              value: LocalExecutor
+            - name: AIRFLOW__CORE__LOAD_EXAMPLES
+              value: "False"
+            - name: AIRFLOW__CORE__DAGS_FOLDER
+              value: /opt/airflow/dags
+            - name: AIRFLOW__CORE__FERNET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: fernet-key
+            - name: AIRFLOW__WEBSERVER__SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: fernet-key
+            - name: AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL
+              value: "30"
+            - name: AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT
+              value: "60"
+            - name: AIRFLOW__DATABASE__SQL_ALCHEMY_CONN
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: postgres-conn
+
+            # ===== AWS S3 =====
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: aws-access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: aws-secret-access-key
+            - name: S3_BUCKET_NAME
+              value: "wars_dataset"
+            - name: AWS_DEFAULT_REGION
+              value: "us-east-1"
+
+            # ===== BIGQUERY =====
+            - name: BIGQUERY_PROJECT
+              value: "proyectotabd"
+            - name: BIGQUERY_DATASET
+              value: "wars_dataset"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /opt/airflow/credentials/gcp-key.json
+
+            # ===== MONGODB ATLAS =====
+            - name: MONGO_ATLAS_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: mongo-uri
+
+            # ===== NEO4J AURA =====
+            - name: NEO4J_URI
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-uri
+            - name: NEO4J_USER
+              value: "neo4j"
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: airflow-secrets
+                  key: neo4j-password
+            - name: NEO4J_DATABASE
+              value: "neo4j"
+
+          volumeMounts:
+            - name: dags
+              mountPath: /opt/airflow/dags
+            - name: credentials
+              mountPath: /opt/airflow/credentials
+              readOnly: true
+
+      # ===============================
+      # Volúmenes
+      # ===============================
+      volumes:
+        - name: dags
+          emptyDir: {}
+        - name: dags-configmap
+          configMap:
+            name: airflow-dags
+        - name: credentials
+          secret:
+            secretName: gcp-credentials-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: airflow-service
+  namespace: wars
+spec:
+  selector:
+    app: airflow
+  ports:
+    - name: web
+      port: 8080
+      targetPort: 8080
+  type: NodePort

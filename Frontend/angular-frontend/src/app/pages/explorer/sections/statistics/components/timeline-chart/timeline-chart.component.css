@@ -1,0 +1,188 @@
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.chart-container {
+  width: 100%;
+  min-height: 450px;
+  position: relative;
+}
+
+/* ============================================
+   PLACEHOLDER (LOADING)
+   ============================================ */
+.chart-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+  background: var(--background);
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+}
+
+.placeholder-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted-foreground);
+}
+
+.placeholder-content .material-icons {
+  font-size: 48px;
+  opacity: 0.5;
+}
+
+.placeholder-content .rotating {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.placeholder-content p {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   WRAPPER DEL GRÁFICO
+   ============================================ */
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CANVAS DEL GRÁFICO
+   ============================================ */
+.chart-canvas-wrapper {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  background: var(--background);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+/* ============================================
+   INSIGHTS AUTOMÁTICOS
+   ============================================ */
+.chart-insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--accent);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.insight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--background);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.insight-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.insight-icon {
+  color: var(--primary);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.insight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.insight-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.insight-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* ============================================
+   RESPONSIVE - TABLETS
+   ============================================ */
+@media (max-width: 1024px) {
+  .chart-canvas-wrapper {
+    height: 350px;
+  }
+
+  .chart-insights {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES
+   ============================================ */
+@media (max-width: 640px) {
+  .chart-container {
+    min-height: 400px;
+  }
+
+  .chart-canvas-wrapper {
+    height: 300px;
+    padding: 0.5rem;
+  }
+
+  .chart-insights {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .insight-item {
+    padding: 0.5rem;
+  }
+
+  .insight-icon {
+    font-size: 20px;
+  }
+
+  .insight-label {
+    font-size: 0.7rem;
+  }
+
+  .insight-value {
+    font-size: 0.8rem;
+  }
+}

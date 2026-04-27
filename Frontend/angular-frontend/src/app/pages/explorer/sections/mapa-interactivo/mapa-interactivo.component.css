@@ -1,0 +1,292 @@
+/* ================================================
+   CONTENEDOR PRINCIPAL
+   ================================================ */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 180px);
+  min-height: 600px;
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mapa */
+#map {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* ================================================
+   LOADING OVERLAY
+   ================================================ */
+#loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* ================================================
+   CONTROLES FLOTANTES
+   ================================================ */
+.map-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 500;
+}
+
+.control-button {
+  width: 44px;
+  height: 44px;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.control-button:hover {
+  background: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.control-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.control-button .material-icons {
+  font-size: 20px;
+  color: #333;
+}
+
+/* ================================================
+   LEYENDA DEL MAPA
+   ================================================ */
+.map-legend {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 500;
+  min-width: 180px;
+}
+
+.map-legend h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.legend-color.small {
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+}
+
+.legend-color.medium {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.legend-color.large {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.legend-item span {
+  font-size: 13px;
+  color: #666;
+}
+
+.region-filter {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 9000;
+  background: white;
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ================================================
+   CLUSTERS PERSONALIZADOS (Leaflet)
+   ================================================ */
+:host ::ng-deep .custom-cluster {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 3px solid white;
+}
+
+:host ::ng-deep .custom-cluster span {
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ================================================
+   POPUPS DEL MAPA
+   ================================================ */
+:host ::ng-deep .cluster-popup,
+:host ::ng-deep .event-popup {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:host ::ng-deep .cluster-popup h3,
+:host ::ng-deep .event-popup h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+:host ::ng-deep .cluster-popup p,
+:host ::ng-deep .event-popup p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+:host ::ng-deep .cluster-popup p strong,
+:host ::ng-deep .event-popup p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* ================================================
+   MARKER CLUSTER GROUPS (Leaflet)
+   ================================================ */
+:host ::ng-deep .marker-cluster-small {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+
+:host ::ng-deep .marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+
+:host ::ng-deep .marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+
+:host ::ng-deep .marker-cluster-medium div {
+  background-color: rgba(240, 194, 12, 0.6);
+}
+
+:host ::ng-deep .marker-cluster-large {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+
+:host ::ng-deep .marker-cluster-large div {
+  background-color: rgba(241, 128, 23, 0.6);
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 768px) {
+  .map-controls {
+    top: 10px;
+    right: 10px;
+  }
+
+  .map-legend {
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    padding: 12px;
+    min-width: 150px;
+  }
+
+  .map-legend h4 {
+    font-size: 13px;
+  }
+
+  .legend-item span {
+    font-size: 12px;
+  }
+
+  .control-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .control-button .material-icons {
+    font-size: 18px;
+  }
+}

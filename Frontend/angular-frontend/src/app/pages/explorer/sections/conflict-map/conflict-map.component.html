@@ -1,0 +1,574 @@
+<!-- ======================================================
+     CONTENEDOR PRINCIPAL
+     ====================================================== -->
+
+<!-- Estado de carga inicial -->
+<div *ngIf="isInitializing()" class="loading-initial">
+  <div class="loading-content">
+    <div class="spinner-large"></div>
+    <h2>Cargando módulo de redes de conflictos...</h2>
+    <p>Inicializando conexión con la base de datos</p>
+  </div>
+</div>
+
+<!-- Error crítico -->
+<div *ngIf="hasCriticalError()" class="critical-error">
+  <div class="error-content">
+    <i class="icon-alert-large"></i>
+    <h2>Base de datos no disponible</h2>
+    <p>{{ error.initial }}</p>
+    <button class="btn btn-primary" (click)="checkServiceHealth()">
+      <i class="icon-refresh"></i>
+      Reintentar conexión
+    </button>
+  </div>
+</div>
+
+<!-- Componente normal cuando está listo -->
+<div *ngIf="isReady()" class="conflict-map-container">
+  <div class="conflict-map-container">
+    <!-- ===== HEADER ===== -->
+    <div class="conflict-map-header">
+      <div class="header-content">
+        <h1 class="page-title">
+          <i class="icon-network"></i>
+          Mapa de Conflictos Globales
+        </h1>
+        <p class="page-subtitle">
+          Visualiza las relaciones entre países y actores en conflictos armados
+        </p>
+      </div>
+
+      <div
+        class="service-status"
+        [class.healthy]="serviceHealthy"
+        [class.unhealthy]="!serviceHealthy"
+      >
+        <span class="status-indicator"></span>
+        <span class="status-text">{{
+          serviceHealthy ? "Servicio activo" : "Verificando conexión..."
+        }}</span>
+      </div>
+    </div>
+
+    <!-- ======================================================
+       LAYOUT PRINCIPAL: SIDEBAR + CONTENT + DETAILS
+       ====================================================== -->
+    <div class="main-layout" *ngIf="serviceHealthy">
+      <!-- ===== SIDEBAR IZQUIERDO: FILTROS ===== -->
+      <aside class="sidebar-left">
+        <!-- Selector de tipo de filtro -->
+        <div class="filter-type-selector">
+          <h3 class="section-title">Tipo de filtro</h3>
+          <div class="button-group">
+            <button
+              class="btn-filter-type"
+              [class.active]="filterType === GraphFilterType.COUNTRY"
+              (click)="onFilterTypeChange(GraphFilterType.COUNTRY)"
+            >
+              <i class="icon-globe"></i>
+              País
+            </button>
+            <button
+              class="btn-filter-type"
+              [class.active]="filterType === GraphFilterType.ACTOR"
+              (click)="onFilterTypeChange(GraphFilterType.ACTOR)"
+            >
+              <i class="icon-users"></i>
+              Actor
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-box">
+          <i class="icon-search"></i>
+          <input
+            type="text"
+            class="search-input"
+            [(ngModel)]="searchTerm"
+            (input)="onSearchInput(searchTerm)"
+            [placeholder]="
+              'Buscar ' + getFilterTypeLabel().toLowerCase() + '...'
+            "
+            [disabled]="loading.filters"
+          />
+        </div>
+
+        <!-- Loading de filtros -->
+        <div class="loading-container" *ngIf="loading.filters">
+          <div class="spinner"></div>
+          <p>Cargando filtros...</p>
+        </div>
+
+        <!-- Error en filtros -->
+        <div class="alert alert-error" *ngIf="error.filters">
+          <i class="icon-alert"></i>
+          <p>{{ error.filters }}</p>
+        </div>
+
+        <!-- Lista de filtros -->
+        <div class="filter-list" *ngIf="!loading.filters && !error.filters">
+          <h3 class="section-title">
+            {{ getFilterTypeLabel() }}s disponibles
+            <span class="badge">{{ filteredFilters.length }}</span>
+          </h3>
+
+          <!-- Sin resultados -->
+          <div class="no-results" *ngIf="filteredFilters.length === 0">
+            <i class="icon-search"></i>
+            <p>No se encontraron resultados</p>
+            <small>Intenta con otro término de búsqueda</small>
+          </div>
+
+          <!-- Lista de items -->
+          <div class="filter-items" *ngIf="filteredFilters.length > 0">
+            <div
+              class="filter-item"
+              *ngFor="let filter of filteredFilters"
+              [class.selected]="selectedEntity === filter.value"
+              (click)="onEntitySelect(filter.value)"
+            >
+              <div class="filter-item-header">
+                <span class="filter-item-name">{{ filter.label }}</span>
+                <span class="filter-item-badge">{{
+                  filter.conflict_count
+                }}</span>
+              </div>
+
+              <div class="filter-item-stats">
+                <span class="stat">
+                  <i class="icon-skull"></i>
+                  {{ formatNumber(filter.total_deaths) }} muertes
+                </span>
+                <span class="stat">
+                  <i class="icon-flame"></i>
+                  {{ filter.conflict_count }} conflictos
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles adicionales -->
+        <div class="sidebar-footer" *ngIf="selectedEntity">
+          <button class="btn btn-secondary btn-block" (click)="resetGraph()">
+            <i class="icon-refresh"></i>
+            Reiniciar
+          </button>
+        </div>
+      </aside>
+
+      <!-- ===== CONTENIDO CENTRAL: GRAFO ===== -->
+      <main class="main-content">
+        <!-- Toolbar del grafo -->
+        <div class="graph-toolbar" *ngIf="selectedEntity">
+          <div class="toolbar-left">
+            <h2 class="graph-title">
+              <i class="icon-target"></i>
+              {{ selectedEntity }}
+            </h2>
+            <span class="graph-subtitle" *ngIf="graphData">
+              {{ graphData.summary.total_nodes }} nodos ·
+              {{ graphData.summary.total_edges }} conexiones ·
+              {{ formatNumber(graphData.summary.total_deaths) }} muertes
+            </span>
+          </div>
+
+          <div class="toolbar-right">
+            <!-- Control de profundidad -->
+            <div class="depth-control">
+              <label>Profundidad:</label>
+              <div class="button-group">
+                <button
+                  class="btn btn-sm"
+                  [class.active]="graphDepth === 1"
+                  (click)="onDepthChange(1)"
+                >
+                  1
+                </button>
+                <button
+                  class="btn btn-sm"
+                  [class.active]="graphDepth === 2"
+                  (click)="onDepthChange(2)"
+                >
+                  2
+                </button>
+              </div>
+            </div>
+
+            <button
+              class="btn btn-icon"
+              (click)="downloadGraphAsImage()"
+              title="Descargar como imagen"
+            >
+              <i class="icon-download"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Estado inicial: sin selección -->
+        <div
+          class="graph-placeholder"
+          *ngIf="!selectedEntity && !loading.graph && !error.graph"
+        >
+          <div class="placeholder-content">
+            <i class="icon-network-large"></i>
+            <h3>Selecciona una entidad</h3>
+            <p>
+              Elige un {{ getFilterTypeLabel().toLowerCase() }} de la lista para
+              visualizar el grafo de relaciones
+            </p>
+            <div class="placeholder-features">
+              <div class="feature">
+                <i class="icon-check"></i>
+                <span>Visualización interactiva</span>
+              </div>
+              <div class="feature">
+                <i class="icon-check"></i>
+                <span>Detalles en tiempo real</span>
+              </div>
+              <div class="feature">
+                <i class="icon-check"></i>
+                <span>Múltiples niveles de profundidad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading del grafo -->
+        <div class="graph-loading" *ngIf="loading.graph">
+          <div class="loading-content">
+            <div class="spinner-large"></div>
+            <h3>Construyendo grafo...</h3>
+            <p>Analizando relaciones de conflictos</p>
+          </div>
+        </div>
+
+        <!-- Error en el grafo -->
+        <div class="graph-error" *ngIf="error.graph">
+          <div class="error-content">
+            <i class="icon-alert-large"></i>
+            <h3>Error al cargar el grafo</h3>
+            <p>{{ error.graph }}</p>
+            <button
+              class="btn btn-primary"
+              (click)="loadGraph(selectedEntity!)"
+            >
+              <i class="icon-refresh"></i>
+              Reintentar
+            </button>
+          </div>
+        </div>
+
+        <!-- Contenedor del grafo -->
+        <div
+          #graphContainer
+          class="graph-container visible"
+          style="display: block; min-height: 600px; border: 3px solid blue"
+        >
+          <p style="color: red; padding: 20px"></p>
+        </div>
+
+        <!-- Leyenda del grafo -->
+        <div class="graph-legend" *ngIf="hasGraphData()">
+          <h4>Leyenda de Intensidad</h4>
+          <div class="legend-items">
+            <!-- ✅ Nivel 1: Muy alto -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #8b0000"
+              ></span>
+              <span>Muy alto impacto (&gt;70%)</span>
+            </div>
+
+            <!-- ✅ Nivel 2: Alto -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #dc143c"
+              ></span>
+              <span>Alto impacto (50-70%)</span>
+            </div>
+
+            <!-- ✅ Nivel 3: Medio-alto -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #ff6347"
+              ></span>
+              <span>Medio-alto (30-50%)</span>
+            </div>
+
+            <!-- ✅ Nivel 4: Medio -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #ff8c00"
+              ></span>
+              <span>Medio (15-30%)</span>
+            </div>
+
+            <!-- ✅ Nivel 5: Bajo -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #ffa500"
+              ></span>
+              <span>Bajo (5-15%)</span>
+            </div>
+
+            <!-- ✅ Nivel 6: Muy bajo -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #ffd700"
+              ></span>
+              <span>Muy bajo (1-5%)</span>
+            </div>
+
+            <!-- ✅ Nivel 7: Mínimo -->
+            <div class="legend-item">
+              <span
+                class="legend-circle"
+                style="background-color: #87ceeb"
+              ></span>
+              <span>Mínimo (&lt;1%)</span>
+            </div>
+          </div>
+
+          <p class="legend-note">
+            <i class="icon-info"></i>
+            El tamaño del nodo representa el número de conexiones. El grosor de
+            las líneas representa el número de muertes. Los porcentajes son
+            relativos al país con más muertes.
+          </p>
+        </div>
+      </main>
+
+      <!-- ===== PANEL DERECHO: DETALLES ===== -->
+      <aside class="sidebar-right" [class.visible]="showDetailsPanel">
+        <!-- Header del panel -->
+        <div class="panel-header">
+          <h3 class="panel-title">
+            <i class="icon-info-circle"></i>
+            Detalles
+          </h3>
+          <button class="btn-close" (click)="closeDetailsPanel()">
+            <i class="icon-close"></i>
+          </button>
+        </div>
+
+        <!-- Loading de detalles -->
+        <div class="loading-container" *ngIf="loading.details">
+          <div class="spinner"></div>
+          <p>Cargando detalles...</p>
+        </div>
+
+        <!-- Error en detalles -->
+        <div class="alert alert-error" *ngIf="error.details">
+          <i class="icon-alert"></i>
+          <p>{{ error.details }}</p>
+        </div>
+
+        <!-- Contenido de detalles -->
+        <div
+          class="panel-content"
+          *ngIf="selectedNode && !loading.details && !error.details"
+        >
+          <!-- Información básica -->
+          <div class="detail-section">
+            <h4 class="detail-section-title">{{ selectedNode.name }}</h4>
+            <p class="detail-region" *ngIf="selectedNode.region">
+              <i class="icon-map-pin"></i>
+              {{ selectedNode.region }}
+            </p>
+            <span class="detail-badge">{{
+              selectedNode.type === "country" ? "País" : "Actor"
+            }}</span>
+          </div>
+
+          <!-- Estadísticas generales -->
+          <div class="detail-section">
+            <h5 class="detail-subtitle">Estadísticas Generales</h5>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <i class="icon-flame"></i>
+                <div>
+                  <span class="stat-value">{{
+                    selectedNode.statistics.total_conflicts
+                  }}</span>
+                  <span class="stat-label">Conflictos</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <i class="icon-skull"></i>
+                <div>
+                  <span class="stat-value">{{
+                    formatNumber(selectedNode.statistics.total_deaths)
+                  }}</span>
+                  <span class="stat-label">Muertes</span>
+                </div>
+              </div>
+              <div
+                class="stat-card"
+                *ngIf="selectedNode.statistics.total_events"
+              >
+                <i class="icon-list"></i>
+                <div>
+                  <span class="stat-value">{{
+                    formatNumber(selectedNode.statistics.total_events)
+                  }}</span>
+                  <span class="stat-label">Eventos</span>
+                </div>
+              </div>
+              <div
+                class="stat-card"
+                *ngIf="selectedNode.statistics.total_encounters"
+              >
+                <i class="icon-crosshairs"></i>
+                <div>
+                  <span class="stat-value">{{
+                    selectedNode.statistics.total_encounters
+                  }}</span>
+                  <span class="stat-label">Encuentros</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <i class="icon-network"></i>
+                <div>
+                  <span class="stat-value">{{
+                    selectedNode.statistics.connections
+                  }}</span>
+                  <span class="stat-label">Conexiones</span>
+                </div>
+              </div>
+              <div
+                class="stat-card"
+                *ngIf="selectedNode.statistics.countries_active"
+              >
+                <i class="icon-globe"></i>
+                <div>
+                  <span class="stat-value">{{
+                    selectedNode.statistics.countries_active
+                  }}</span>
+                  <span class="stat-label">Países</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top conflictos -->
+          <div class="detail-section">
+            <h5 class="detail-subtitle">
+              Principales Conflictos
+              <span class="badge">{{ selectedNode.top_conflicts.length }}</span>
+            </h5>
+            <div class="conflict-list">
+              <div
+                class="conflict-item"
+                *ngFor="let conflict of selectedNode.top_conflicts"
+              >
+                <div class="conflict-header">
+                  <span class="conflict-name">{{ conflict.name }}</span>
+                  <span class="conflict-deaths">{{
+                    formatNumber(conflict.deaths)
+                  }}</span>
+                </div>
+                <div class="conflict-stats">
+                  <span *ngIf="conflict.events">
+                    <i class="icon-list"></i> {{ conflict.events }} eventos
+                  </span>
+                  <span *ngIf="conflict.encounters">
+                    <i class="icon-crosshairs"></i>
+                    {{ conflict.encounters }} encuentros
+                  </span>
+                  <span *ngIf="conflict.duration_days">
+                    <i class="icon-clock"></i> {{ conflict.duration_days }} días
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entidades conectadas -->
+          <div class="detail-section">
+            <h5 class="detail-subtitle">
+              {{
+                selectedNode.type === "country"
+                  ? "Países Conectados"
+                  : "Actores Enfrentados"
+              }}
+              <span class="badge">{{
+                selectedNode.connected_entities.length
+              }}</span>
+            </h5>
+            <div class="entity-list">
+              <div
+                class="entity-item"
+                *ngFor="let entity of selectedNode.connected_entities"
+              >
+                <div class="entity-header">
+                  <i
+                    [class]="
+                      selectedNode.type === 'country'
+                        ? 'icon-globe'
+                        : 'icon-user'
+                    "
+                  ></i>
+                  <span class="entity-name">{{ entity.name }}</span>
+                </div>
+                <div class="entity-stats">
+                  <span *ngIf="entity.shared_conflicts">
+                    {{ entity.shared_conflicts }} conflictos compartidos
+                  </span>
+                  <span *ngIf="entity.shared_deaths">
+                    {{ formatNumber(entity.shared_deaths) }} muertes
+                  </span>
+                  <span *ngIf="entity.encounters">
+                    {{ entity.encounters }} encuentros
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actores involucrados (solo para países) -->
+          <div
+            class="detail-section"
+            *ngIf="
+              selectedNode.actors_involved &&
+              selectedNode.actors_involved.length > 0
+            "
+          >
+            <h5 class="detail-subtitle">
+              Actores Involucrados
+              <span class="badge">{{
+                selectedNode.actors_involved.length
+              }}</span>
+            </h5>
+            <div class="actor-list">
+              <div
+                class="actor-item"
+                *ngFor="let actor of selectedNode.actors_involved"
+              >
+                <div class="actor-header">
+                  <i class="icon-user"></i>
+                  <span class="actor-name">{{ actor.name }}</span>
+                  <span class="actor-role" *ngIf="actor.role">{{
+                    actor.role
+                  }}</span>
+                </div>
+                <div class="actor-stats">
+                  <span>{{ actor.participation_count }} participaciones</span>
+                  <span>{{ formatNumber(actor.deaths_caused) }} muertes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>

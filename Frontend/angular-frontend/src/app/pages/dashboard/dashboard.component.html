@@ -1,0 +1,90 @@
+<div class="min-h-screen bg-background">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-sm border-b border-border">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <span class="material-icons text-2xl">public</span>
+          <span class="text-xl font-semibold">Observatorio de Eventos Bélicos</span>
+        </div>
+
+        <!-- Menu -->
+        <div class="flex items-center gap-6">
+          <a routerLink="/" class="px-4 py-2 hover:text-primary transition">
+            <span class="material-icons text-sm align-middle mr-1">home</span>
+            Inicio
+          </a>
+          <a routerLink="/dashboard" class="px-4 py-2 rounded-lg bg-primary text-primary-foreground">
+            <span class="material-icons text-sm align-middle mr-1">dashboard</span>
+            Dashboard
+          </a>
+          <a routerLink="/explorer" class="px-4 py-2 hover:text-primary transition">
+            <span class="material-icons text-sm align-middle mr-1">explore</span>
+            Explorar
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="pt-24 pb-12 px-6">
+    <div class="container mx-auto">
+
+      <!-- Header -->
+      <div class="mb-8">
+        <h1 class="text-4xl font-bold mb-2">{{ title }}</h1>
+        <p class="text-muted-foreground">Resumen general de eventos y estadísticas</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div *ngFor="let stat of stats"
+             class="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition">
+          <div class="flex items-center justify-between mb-4">
+            <span class="material-icons text-4xl text-primary">{{ stat.icon }}</span>
+            <span [class]="stat.changeType === 'positive' ? 'text-green-500' : 'text-red-500'"
+                  class="text-sm font-medium">
+              {{ stat.change }}
+            </span>
+          </div>
+          <h3 class="text-3xl font-bold mb-1">{{ stat.value }}</h3>
+          <p class="text-sm text-muted-foreground">{{ stat.title }}</p>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="mb-8">
+        <h2 class="text-2xl font-semibold mb-6">Acceso Rápido</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a *ngFor="let link of quickLinks"
+             [routerLink]="link.route"
+             class="bg-card border border-border rounded-lg p-6 hover:shadow-lg hover:border-primary transition group">
+            <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition">
+              <span class="material-icons text-2xl text-accent-foreground group-hover:text-primary-foreground">
+                {{ link.icon }}
+              </span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">{{ link.title }}</h3>
+            <p class="text-sm text-muted-foreground">{{ link.description }}</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Recent Activity Placeholder -->
+      <div class="bg-card border border-border rounded-lg p-6">
+        <h2 class="text-2xl font-semibold mb-4">Actividad Reciente</h2>
+        <div class="text-center py-12">
+          <span class="material-icons text-6xl text-muted-foreground mb-4">update</span>
+          <p class="text-muted-foreground">
+            Los datos se cargarán cuando el backend esté conectado
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

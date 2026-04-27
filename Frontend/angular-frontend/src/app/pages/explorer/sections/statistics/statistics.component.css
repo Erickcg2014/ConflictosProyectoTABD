@@ -1,0 +1,520 @@
+/* ============================================
+   VARIABLES
+   ============================================ */
+:host {
+  --section-padding: 2rem;
+  --section-gap: 1.5rem;
+  --card-gap: 1.5rem;
+  --mini-nav-width: 180px;
+  --mini-nav-right: 1.5rem;
+  --transition-speed: 0.3s;
+
+  display: block;
+  width: 100%;
+}
+
+/* ============================================
+   LOADING OVERLAY
+   ============================================ */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background: hsl(var(--card));
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.loading-spinner .material-icons {
+  font-size: 48px;
+  color: hsl(var(--primary));
+}
+
+.loading-spinner .rotating {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner p {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.statistics-container {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  padding: 1.5rem var(--section-padding) 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+/* ============================================
+   SECCIÓN DE FILTROS - RELATIVE (NO STICKY)
+   ============================================ */
+.filters-section {
+  /* ✅ CAMBIO CRÍTICO: Cambiar de sticky a relative */
+  position: relative;
+
+  /* ✅ Ya NO necesita top ni z-index alto */
+  z-index: 1;
+
+  background-color: hsl(var(--background));
+  padding: 0;
+  margin-bottom: var(--section-gap);
+
+  /* Sin border-bottom ni box-shadow para evitar separación visual */
+}
+
+/* ✅ ELIMINAR el pseudo-elemento ::before que causaba problemas */
+
+/* ============================================
+   SECCIONES CON SCROLL (CONTENIDO)
+   ============================================ */
+.scroll-section {
+  position: relative;
+  margin-bottom: var(--section-gap);
+  scroll-margin-top: 100px;
+}
+
+.stats-section {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: var(--section-padding);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: box-shadow var(--transition-speed) ease;
+  animation: fadeInSection 0.5s ease;
+}
+
+.stats-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   TÍTULOS DE SECCIÓN
+   ============================================ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid hsl(var(--primary));
+}
+
+.section-title .material-icons {
+  color: hsl(var(--primary));
+  font-size: 28px;
+}
+
+.section-title h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+/* ============================================
+   GRID DE ANÁLISIS (50/50)
+   ============================================ */
+.analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--card-gap);
+}
+
+.chart-card {
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all var(--transition-speed) ease;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.chart-card h3 .material-icons {
+  color: hsl(var(--muted-foreground));
+  font-size: 20px;
+}
+
+/* ============================================
+   MINI NAVEGACIÓN LATERAL
+   ============================================ */
+.section-nav {
+  position: fixed;
+  right: var(--mini-nav-right);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.section-nav:hover {
+  opacity: 1;
+}
+
+.section-nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  white-space: nowrap;
+  text-align: left;
+  font-family: inherit;
+}
+
+.section-nav button:hover {
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+}
+
+.section-nav button.active {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-weight: 600;
+}
+
+.section-nav button .material-icons {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.section-nav button .label {
+  display: inline-block;
+}
+
+/* ============================================
+   BOTÓN VOLVER ARRIBA
+   ============================================ */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all var(--transition-speed) ease;
+  animation: fadeInUp 0.3s ease;
+  font-family: inherit;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-top-btn:active {
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn .material-icons {
+  font-size: 24px;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeInSection {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE - DESKTOP GRANDE (>1400px)
+   ============================================ */
+@media (min-width: 1400px) {
+  .statistics-container {
+    padding: 1.5rem 3rem 2rem;
+  }
+
+  :host {
+    --section-padding: 2.5rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - TABLETS (≤1024px)
+   ============================================ */
+@media (max-width: 1024px) {
+  .section-nav {
+    display: none;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  :host {
+    --section-padding: 1.5rem;
+    --section-gap: 1.25rem;
+  }
+
+  .statistics-container {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .filters-section {
+    margin-bottom: 1.25rem;
+  }
+
+  .scroll-section {
+    scroll-margin-top: 80px;
+    margin-bottom: 1.25rem;
+  }
+
+  .scroll-top-btn {
+    width: 48px;
+    height: 48px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .chart-card {
+    min-height: 350px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MÓVILES (≤640px)
+   ============================================ */
+@media (max-width: 640px) {
+  .statistics-container {
+    padding: 1rem;
+  }
+
+  :host {
+    --section-padding: 1rem;
+    --section-gap: 1rem;
+    --card-gap: 1rem;
+  }
+
+  .filters-section {
+    margin-bottom: 1rem;
+  }
+
+  .scroll-section {
+    scroll-margin-top: 70px;
+    margin-bottom: 1rem;
+  }
+
+  .stats-section {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .section-title .material-icons {
+    font-size: 24px;
+  }
+
+  .section-title h2 {
+    font-size: 1.25rem;
+  }
+
+  .chart-card {
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .chart-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .chart-card h3 .material-icons {
+    font-size: 18px;
+  }
+
+  .scroll-top-btn {
+    width: 44px;
+    height: 44px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .scroll-top-btn .material-icons {
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+.dark .stats-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark .loading-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.dark .section-nav {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .scroll-top-btn {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dark .scroll-top-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+.section-nav button:focus-visible,
+.scroll-top-btn:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Reducir movimiento para usuarios con preferencias de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .filters-section,
+  .section-nav,
+  .scroll-top-btn,
+  .loading-overlay {
+    display: none !important;
+  }
+
+  .statistics-container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .stats-section {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #000;
+    margin-bottom: 1rem;
+  }
+
+  .analysis-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

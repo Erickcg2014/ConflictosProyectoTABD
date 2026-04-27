@@ -1,0 +1,137 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: wars
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: localhost:5000/wars-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+              name: http
+          env:
+            - name: ENVIRONMENT
+              value: "production"
+
+            # BigQuery
+            - name: BIGQUERY_PROJECT
+              value: "proyectotabd"
+            - name: BIGQUERY_DATASET
+              value: "wars_dataset"
+            - name: BIGQUERY_TABLE
+              value: "war_events"
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/app/credentials/gcp-key.json"
+
+            # MongoDB Atlas
+            - name: MONGO_ATLAS_URI
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret
+                  key: uri
+            - name: MONGO_DATABASE
+              value: "wars_db"
+            - name: MONGO_COLLECTION
+              value: "war_locations"
+
+            # Neo4j Aura
+            - name: NEO4J_URI
+              valueFrom:
+                secretKeyRef:
+                  name: neo4j-secret
+                  key: uri
+            - name: NEO4J_USER
+              value: "neo4j"
+            - name: NEO4J_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: neo4j-secret
+                  key: password
+            - name: NEO4J_DATABASE
+              value: "neo4j"
+
+            # CORS Configuration
+            - name: CORS_ORIGINS
+              value: "http://localhost,http://localhost:4200,http://localhost:3000,http://frontend-service"
+
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8000
+              scheme: HTTP
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 30
+
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+
+          volumeMounts:
+            - name: gcp-credentials
+              mountPath: /app/credentials
+              readOnly: true
+
+      volumes:
+        - name: gcp-credentials
+          secret:
+            secretName: gcp-credentials
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: wars
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
